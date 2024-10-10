@@ -93,16 +93,11 @@ public class UsuaruirsDAO {
     /*
     
     */
-    public ArrayList<Usuarios> BuscarUsuarioNombre(String opc, String texto){
+    public ArrayList<Usuarios> BuscarUsuarioNombre(String texto){
         ArrayList<Usuarios> ar = new ArrayList<Usuarios>();
         try{
             String sql = "SELECT * FROM Usuarios ";
-            if(texto != ""){
-                if(opc.equals("Libro"))
-                    sql += " WHERE NOMBRE"+texto;
-                else
-                    sql += " WHERE A.Nombre LIKE '%"+ texto+"%'";
-            }
+           
             ps = conectar().prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
