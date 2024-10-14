@@ -4,8 +4,7 @@
  */
 package Controlador;
 
-import Modelo.Usuarios;
-import Modelo.UsuaruirsDAO;
+import Modelo.*;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -33,48 +32,41 @@ public class UsuariosControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Usuarios usuarios;
-        UsuaruirsDAO usuarioDAO = new UsuaruirsDAO();
+        
         try (PrintWriter out = response.getWriter()) {
-             RequestDispatcher rd;
-            if(request.getParameter("validar") != null){
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UsuariosControl</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UsuariosControl at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-             String txt_name = request.getParameter("txt_name");
-             // request.setAttribute("Validar", usuarioDAO.BuscarUsuarioNombre(texto));
-             var SQL= usuarioDAO.BuscarUsuarioNombre(txt_name);
-             var List=SQL.forEach(usuarios->{usuarios.getNombre(),});
-                if (!=null) {
-                    
-             ArrayList<Usuarios> listaUsuarios = new ArrayList<Usuarios>();
-             /*
-               <% for(Autores A:listaAutores){ %>
-                            <option value="<%=A.getIdAutor()%>"><%=A.getNombre()%></option>
-                        <% } %>
-             */
-                    for (Usuarios U: listaUsuarios) {
-                        if (txt_name == U.getNombre()) {
-                            rd = request.getRequestDispatcher("html/Home.jsp");
-           rd.forward(request, response);
-                        }
-                    }
-                }
-               
-        }else  {
-                    out.println("<h1>fallo</h1>");
-            }
-           /* rd = request.getRequestDispatcher("index.html");
-           rd.forward(request, response);
+           /*
+             public Usuarios(int id_Usuarios, String nombre, String email, String Passwor, int id_rol) {
+        this.id_Usuarios = id_Usuarios;
+        this.nombre = nombre;
+        this.email = email;
+        this.Passwor = Passwor;
+        this.id_rol = id_rol;
+    }
             */
+             RequestDispatcher rd;
+            Usuarios usuarios;
+            UsuaruirsDAO usuaruirsDAO = new UsuaruirsDAO();
+            if(request.getParameter("validar") != null){
+            String nombres= request.getParameter("txt_name");
+            String passwor= request.getParameter("txt_passord");
+             // usuarios = new Usuarios(1, nombres,"", passwor,Integer.parseInt(""));
+                usuarios = new Usuarios(nombres,passwor);
+                if(usuaruirsDAO.ValidarUsuario(usuarios)){
+                    request.setAttribute("r", "1");
+                    request.setAttribute("usr", request.getParameter("txt_name"));
+                    
+                }
+                else{
+                    request.setAttribute("r", "0");
+                }
+                rd = request.getRequestDispatcher("Login.jsp");
+                rd.forward(request, response);
+                
+            }
+          
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

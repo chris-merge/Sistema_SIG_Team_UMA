@@ -3,13 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+/*
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+*/
+import java.sql.*;
+import java.util.*;
 
 /**
  *
@@ -114,4 +117,20 @@ public class UsuaruirsDAO {
     /*
     
     */
+    public boolean ValidarUsuario(Usuarios pusuario){
+        try{
+            ps = conectar().prepareStatement("SELECT * FROM usuarios WHERE nombre=? "
+                    + "and passwor=?");
+           // ps.setInt(1, pusuario.getId_Usuarios());
+            ps.setString(1, pusuario.getNombre());
+            ps.setString(2, pusuario.getPasswor());
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return true;
+            }
+        }catch(Exception ex){
+            
+        }
+        return false;
+    }
 }
