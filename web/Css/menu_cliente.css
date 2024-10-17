@@ -1,0 +1,70 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 14 oct 2024, 18:09:12
+    Author     : chris
+*/
+
+* {
+  margin:0px;
+  padding: 0px;
+}
+
+.slider {
+  width: 300px;
+  height: 100%;
+  background-color: yellow;
+  position: fixed; 
+  padding: 10px;
+  margin: 0px;
+  border-radius: 10px;
+  
+  /*
+  padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+  */
+}
+
+.slider ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slider li {
+  padding: 1px;
+  border-bottom: 1px solid #ccc;
+  text-align: justify-all;
+  margin-top: 1.5rem;
+ 
+}
+.slider li img{
+    width: auto ;
+      margin-right: 10px;
+     
+     
+     
+}
+.img_list img ,span
+{
+     display: inline-block;
+   
+}
+.img_list img , span{
+    align-items: center;
+}
+#logo{
+    margin-left: 50%;
+    width: 500px;
+    height: 600px
+}
+#menu_logo  #contendor_Img{
+    display: inline-block; 
+}
+#contendor_Img{
+    margin-left: 0%;
+}
