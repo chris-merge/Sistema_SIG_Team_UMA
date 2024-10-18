@@ -34,26 +34,18 @@ public class UsuariosControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
-           /*
-             public Usuarios(int id_Usuarios, String nombre, String email, String Passwor, int id_rol) {
-        this.id_Usuarios = id_Usuarios;
-        this.nombre = nombre;
-        this.email = email;
-        this.Passwor = Passwor;
-        this.id_rol = id_rol;
-    }
-            */
+          
              RequestDispatcher rd;
             Usuarios usuarios;
             UsuaruirsDAO usuaruirsDAO = new UsuaruirsDAO();
             if(request.getParameter("validar") != null){
-            String nombres= request.getParameter("txt_name");
+            String nombres= request.getParameter("usr");
             String passwor= request.getParameter("txt_passord");
              // usuarios = new Usuarios(1, nombres,"", passwor,Integer.parseInt(""));
                 usuarios = new Usuarios(nombres,passwor);
                 if(usuaruirsDAO.ValidarUsuario(usuarios)){
                     request.setAttribute("r", "1");
-                    request.setAttribute("usr", request.getParameter("txt_name"));
+                    request.setAttribute("usr", request.getParameter("usr"));
                     
                 }
                 else{

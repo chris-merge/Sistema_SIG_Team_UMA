@@ -24,7 +24,7 @@
 <form  action="UsuariosControl" method="post">
  <div class="input-group flex-nowrap mb-3">
   <span class="input-group-text" id="addon-wrapping">Nombre </span>
-  <input type="text" name="txt_name" id="txt_name" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required  onkeyup="habilitar()">
+  <input type="text" name="usr" id="txt_name" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required  onkeyup="habilitar()">
 </div>
            <!--  -->
   <div class="input-group flex-nowrap mb-3">
@@ -37,20 +37,29 @@
            
         </form>
     </div> 
-          <%
-            HttpSession sesion = request.getSession();
+          <%--
+               HttpSession sesion = request.getSession();
             if(request.getAttribute("r") != null){
                 if(request.getAttribute("r").equals("1")){
-                    sesion.setAttribute("usr", request.getAttribute("txt_user"));
-                    response.sendRedirect("html/Home.jsp");
-                    //response.sendRedirect(request.getContextPath() + "/html/Home.jsp");
-
+                    sesion.setAttribute("s", request.getAttribute("txt_user"));
+                    response.sendRedirect("Web Pages/html/Home.jsp");
                 }
-                else{
-                out.println("<script>Swal.fire('Error Credenciales Incorrectas');</script>");
-         }
+                else
+                    out.println("<script>Swal.fire('Error Credenciales Incorrectas');</script>");
             }
-        %>
+        --%>
+        <%
+    HttpSession sesion = request.getSession();
+    if (request.getAttribute("r") != null) {
+        if (request.getAttribute("r").equals("1")) {
+            sesion.setAttribute("s", request.getAttribute("usr"));
+            // Corregir ruta relativa para acceder a home.jsp
+            response.sendRedirect("html/Home.jsp");
+        } else {
+            out.println("<script>Swal.fire('Error Credenciales Incorrectas');</script>");
+        }
+    }
+%>
     </body>
    
 </html>

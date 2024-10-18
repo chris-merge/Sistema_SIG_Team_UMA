@@ -19,7 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
   position: fixed; 
   padding: 10px;
   margin: 0px;
-  border-radius: 10px;
+  border-radius: 12px;
   
   /*
   padding: 20px;
@@ -58,13 +58,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     align-items: center;
 }
 #logo{
-    margin-left: 50%;
+   
     width: 500px;
     height: 600px
 }
-#menu_logo  #contendor_Img{
-    display: inline-block; 
+#menu_logo{
+    height: auto;
+    width: 100%;
+   /* border: 2px solid red;*/
+     display: inline-block; 
 }
-#contendor_Img{
-    margin-left: 0%;
+#menu_logo #contendor_Img{
+   margin-left: 25%;
+ /*border: 5px solid green;*/
 }

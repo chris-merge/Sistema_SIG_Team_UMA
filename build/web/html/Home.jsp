@@ -14,13 +14,37 @@
         <link href="../Css/menu_cliente.css" rel="stylesheet" type="text/css"/>
         
     </head>
-    <style>
-
-</style>
 <body>
-    <div id="menu_logo">
+    <%
+            HttpSession sesion = request.getSession();
+            String usr = "";
+            if(sesion.getAttribute("s") != null){
+                //out.println("Bienvenido " + ses.getAttribute("s1"));
+                usr = sesion.getAttribute("s").toString();
+            }
+            else{
+                response.sendRedirect("../Login.jsp");
+            }
+            if(request.getParameter("c") != null){
+                sesion.removeAttribute("s");
+                sesion.invalidate();
+                response.sendRedirect("../Login.jsp");
+            }
+        %>
+
+        <!<!-- comment --> 
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+       
+      <a class="nav-link" href="admin_pages/Usuer.jsp">Cerrar sesion</a>
+    </li>
+  </ul>
+</nav>
         
-   
+        <!-- comment -->
+    
+    <div id="menu_logo">
  <div class="slider">
   <ul class="contenedor">
      <li class="list-group-item">
@@ -81,17 +105,4 @@
    </div>
  </div>
     </body>
-      <%
-            HttpSession sesion = request.getSession();
-            if(request.getAttribute("r") != null){
-                if(request.getAttribute("r").equals("1")){
-                    sesion.setAttribute("usr", request.getAttribute("txt_user"));
-                    response.sendRedirect("index.html");
-                    //response.sendRedirect(request.getContextPath() + "/html/Home.jsp");
-
-                }
-                else
-                    out.println("<h4 class='text-center' style='color:red'>Credenciales incorrectas</h4>");
-            }
-        %>
 </html>
