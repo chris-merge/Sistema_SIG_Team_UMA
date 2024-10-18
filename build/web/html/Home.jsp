@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +16,7 @@
         
     </head>
 <body>
-    <%
+   <%
             HttpSession sesion = request.getSession();
             String usr = "";
             if(sesion.getAttribute("s") != null){
@@ -30,68 +31,74 @@
                 sesion.invalidate();
                 response.sendRedirect("../Login.jsp");
             }
+            //
+            if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
+        sesion.invalidate(); // Invalida la sesión
+        response.sendRedirect("../index.html"); // Redirige a la página de inicio de sesión
+    }
         %>
-
+        
+    
+    <div id="menu_logo">
         <!<!-- comment --> 
-         <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
+         <nav class="navbar navbar-dark bg-dark justify-content-end">
   <ul class="navbar-nav">
     <li class="nav-item">
-       
-      <a class="nav-link" href="admin_pages/Usuer.jsp">Cerrar sesion</a>
+     
+      <a  class="nav-link" href="?action=logout" >Cerrar sesion</a>
     </li>
   </ul>
 </nav>
         
         <!-- comment -->
-    
-    <div id="menu_logo">
  <div class="slider">
+     
   <ul class="contenedor">
      <li class="list-group-item">
          <div class="img_list">    
-         <img src="../Img/Icon/home.png" alt=""/>
-         <span><a href="#"  class="nav-link active" >Menu</a> </span>
+         <img src="../Img/Icon/Homme.png" class="menu_icon" alt=""/>
+         <span><a href="Home.jsp"  class="nav-link active" >Menu</a> </span>
          </div>
      </li>
      <li class="list-group-item">
          <div class="img_list">    
-         <img src="../Img/Icon/home.png" alt=""/>
+             <img src="../Img/Icon/Proyectos.png" class="menu_icon" alt=""/>
          <span><a href="Proyecto.jsp" class="nav-link active" > buscar proyectos</a> </span>
          </div>
      </li>
     <li class="list-group-item">
         <div class="img_list">    
-         <img src="../Img/Icon/home.png" alt=""/>
+            <img src="../Img/Icon/Empleado.png" class="menu_icon" alt=""/>
          <span><a href="#"  class="nav-link active">   buscar empleados</a> </span>
          </div>
     </li>
     <li class="list-group-item">
         <div class="img_list">    
-         <img src="../Img/Icon/home.png" alt=""/>
+         <img src="../Img/Icon/Usuario.png" class="menu_icon" alt=""/>
          <span><a href="#"  class="nav-link active" >   buscar usuario</a> </span>
          </div>
     </li>
     <li class="list-group-item">
         <div class="img_list">    
-         <img src="../Img/Icon/home.png" alt=""/>
+         <img src="../Img/Icon/Nomina.png" class="menu_icon" alt=""/>
          <span><a href="#"  class="nav-link active" > nomina de empleado</a> </span>
          </div>
     </li>
     <li class="list-group-item">
         <div class="img_list">    
-         <img src="../Img/Icon/home.png" alt=""/>
+         <img src="../Img/Icon/home.png" class="menu_icon" alt=""/>
          <span><a href="#"  class="nav-link active" >inventario</a> </span>
          </div>
     </li>
     <li class="list-group-item">
         <div class="img_list">    
-         <img src="../Img/Icon/home.png" alt=""/>
+            <img src="../Img/Icon/Ventas.png" class="menu_icon" alt=""/>
          <span><a href="#"  class="nav-link active" > ventas</a> </span>
          </div>
     </li>
     <li class="list-group-item">
         <div class="img_list">    
-         <img src="../Img/Icon/home.png" alt=""/>
+         <img src="../Img/Icon/Usuario.png" class="menu_icon" alt=""/>
          <span><a href="#"  class="nav-link active" > Usuario</a> </span>
          </div>
     </li>
@@ -101,7 +108,7 @@
 </div>
 <!-- comment -->
     <div id="contendor_Img">
-       <img src="../Img/Logo.png" alt="fallo"/>
+        <img class="logo_dev" src="../Img/Logo.png" alt="fallo"/>
    </div>
  </div>
     </body>
