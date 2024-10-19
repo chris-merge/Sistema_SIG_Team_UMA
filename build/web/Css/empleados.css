@@ -1,0 +1,76 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 oct 2024, 15:29:28
+    Author     : chris
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+}
+
+header {
+    text-align: center;
+}
+
+#agregar-empleado {
+    background-color: #333;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #444;
+}
+
+
+/* Personaliza los estilos según tus preferencias */
+h1, h2,label,th,td{
+    color: white;
+}
+
+form, .mb-3{
+    display: inline-block;
+}
+
+form{
+    width: 100%;
+   /* border: 1px solid red;*/
+}
+#empleado{
+     width: 100%;
+    /*  border: 1px solid green;*/
+}
+/**/
+#agregar-empleado{
+    width: 100%;
+    height: auto;
+}
+/**/
+#buscar{
+    width: 100%;
+    /*  border: 1px solid blue;*/
+}
+#empleado #titulo{
+    display: flex;
+    justify-content: center;
+}
+.navbar .navbar-brand{
+    color:white;
+}

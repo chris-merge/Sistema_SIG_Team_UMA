@@ -69,7 +69,7 @@
     <li class="list-group-item">
         <div class="img_list">    
             <img src="../Img/Icon/Empleado.png" class="menu_icon" alt=""/>
-         <span><a href="#"  class="nav-link active">   buscar empleados</a> </span>
+         <span><a href="Empleado.jsp"  class="nav-link active">   buscar empleados</a> </span>
          </div>
     </li>
     <li class="list-group-item">
