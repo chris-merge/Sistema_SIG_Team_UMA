@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 //
 import Modelo.*;
 import jakarta.servlet.RequestDispatcher;
+import java.util.ArrayList;
 
 /**
  *
@@ -37,13 +38,16 @@ public class ControlUsuarioCRUD extends HttpServlet {
             RequestDispatcher rd;
             Usuarios usuarios;
             UsuaruirsDAO usuaruirsDAO = new UsuaruirsDAO();
+            RolDAO rolDAO = new RolDAO();
             if(request.getParameter("mostrar") != null){
-              
+              //envio de lista de  Usuarios
                request.setAttribute("DatosUsuarios", usuaruirsDAO.MostrarUsuarios());
+               //envio de datos de roles 
+                request.setAttribute("DatosRoles", rolDAO.MostrarRol());
            }
             //fin del try
-               rd = request.getRequestDispatcher("admin_pages/Usuario.jsp");
-           rd.forward(request, response);
+            rd = request.getRequestDispatcher("admin_pages/Usuario.jsp");
+                rd.forward(request, response);
         }
     }
 

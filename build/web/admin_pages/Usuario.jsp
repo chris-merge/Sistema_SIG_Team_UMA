@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link href="../Css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../Css/usuarios.css" rel="stylesheet" type="text/css"/>
+        
         <title>JSP Page</title>
-       
+        <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="Css/usuarios.css">
     </head>
     <body>
         <%
@@ -32,11 +32,14 @@
             }
             //
              ArrayList<Usuarios> ListaUsuarios= new ArrayList<Usuarios> ();
-            if(request.getAttribute("DatosUsuarios") == null)
+             ArrayList<Rol> ListaRol= new ArrayList<Rol> ();
+            if(request.getAttribute("DatosUsuarios") == null &&  request.getAttribute("DatosRoles") == null )
                 response.sendRedirect("../ControlUsuarioCRUD?mostrar");
             try{
                 ListaUsuarios.addAll((Collection)request.getAttribute("DatosUsuarios"));
+                ListaRol.addAll((Collection)request.getAttribute("DatosRoles"));
             }catch(Exception ex){
+            ex.printStackTrace();
             }
             
             //
@@ -57,7 +60,7 @@
         <a class="nav-link" href="#">Infome</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Admin.jsp">Regresar</a>
+        <a class="nav-link" href="admin_pages/Admin.jsp">Regresar</a>
       </li>
     </ul>
   </div>
@@ -67,7 +70,7 @@
         <!-- comment -->
  <div class="container mt-5">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card bg-dark text-white">
                     <div class="card-header">
                         <h5 class="card-title">Agregar Usuario</h5>
@@ -81,12 +84,19 @@
                             </div>
                             <div class="mb-3">
                                 <label for="acceso" class="form-label">Contraseña</label>
-                                <input type="text" class="form-control" id="acceso" name="acceso" placeholder="Ingrese el nivel de acceso">
+                                <input type="password" class="form-control" id="acceso" name="acceso" placeholder="***">
                             </div>
+                            <!---->
                             <div class="mb-3">
-                                <label for="acceso" class="form-label">Rol:</label>
-                                <input type="text" class="form-control" id="acceso" name="acceso" placeholder="Ingrese el nivel de acceso">
-                            </div>
+                                 <label for="acceso" class="form-label">ROl</label>
+                                 <select class="form-select" id="rol">
+                                      <option value="">Seleccione un rol</option>
+                                        <% for(Rol R:ListaRol){ %>
+                                         <option value="vendedor"><%=R.getNombre_rol()%></option>
+                                   <% }%> 
+                                </select>
+                                 </div>
+                         <!---->
                             <div class="mb-3">
                                 <label for="acceso" class="form-label">Privilegio:</label>
                                 <input type="text" class="form-control" id="acceso" name="acceso" placeholder="Ingrese el nivel de acceso">
@@ -103,7 +113,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="card bg-dark text-white">
                     <div class="card-header">
                         <h5 class="card-title">Usuarios</h5>
@@ -118,18 +128,35 @@
                                     <th>Contraseña</th>
                                     <th>Rol</th>
                                     <th>Privilegios</th>
-                                    <th>Acceso</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            </tbody>
-                        </table>
+                    <tr>
+                   <% for(Usuarios U:ListaUsuarios){ %>
+                    <td><%=U.getId_Usuarios()%></td>
+                    <td><%=U.getNombre()%></td>
+                    <td><%=U.getEmail()%></td>
+                    <td><%=U.getPasswor()%></td>
+                    <td><%=U.getId_rol()%></td>
+                    <td>
+      <a href="VistaModificar.jsp?id=<%=U.getId_Usuarios()%>" class="btn btn-success">
+          <i class="fa-solid fa-pen-to-square fa-1x">Modificar</i>
+      </a>
+      <a href="javascript:Eliminar('e', '<%=U.getId_Usuarios()%>')"class="btn btn-danger">
+          <i class="fa-solid fa-trash fa-1x">Eliminar</i>
+      </a>
+                    </td>
+                    </tr>
+                    <% } %>
+                 </tbody>
+               </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
         <!-- comment -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>        
     </body>
 </html>

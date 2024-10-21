@@ -32,7 +32,7 @@ public class RolDAO {
     public int InsertarUsuarios(Rol pRol){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("INSERT INTO Usuarios(nombre_rol,id_Permiso) VALUES(?,?)");
+            ps = conectar().prepareStatement("INSERT INTO roles(nombre_rol,id_Permiso) VALUES(?,?)");
             ps.setString(1, pRol.getNombre_rol());
              ps.setInt(2, pRol.getId_Permiso());
             
@@ -48,7 +48,7 @@ public class RolDAO {
     public int ModificarRol(Rol pRol){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("UPDATE Usuarios SET nombre=?, email=?,passwor=?,id_rol=? WHERE id_Usuarios=?");
+            ps = conectar().prepareStatement("UPDATE roles SET nombre_rol=?, id_Permiso=? WHERE id_rol=?");
               ps.setString(1, pRol.getNombre_rol());
                ps.setInt(4, pRol.getId_Permiso());
             n = ps.executeUpdate();
@@ -62,7 +62,7 @@ public class RolDAO {
     public int EliminarRol(Rol pRol){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("DELETE FROM Usuarios WHERE id_Usuarios=?");
+            ps = conectar().prepareStatement("DELETE FROM roles WHERE id_rol=?");
             ps.setInt(1, pRol.getId_Permiso());
             n = ps.executeUpdate();
             ps.close();
@@ -75,7 +75,7 @@ public class RolDAO {
     public ArrayList<Rol> MostrarRol(){
         ArrayList<Rol> ar = new ArrayList<Rol>();
         try{
-            ps = conectar().prepareStatement("SELECT * FROM Usuarios");
+            ps = conectar().prepareStatement("SELECT * FROM roles");
             rs = ps.executeQuery();
             while(rs.next()){
                 rol = new Rol(rs.getInt(1), rs.getString(2),rs.getInt(3));
