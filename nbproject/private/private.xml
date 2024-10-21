@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/web/html/Empleado.jsp</file>
-            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/web/Css/empleados.css</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Controlador/ControlUsuarioCRUD.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/web/Css/usuarios.css</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/web/admin_pages/Usuario.jsp</file>
         </group>
     </open-files>
 </project-private>

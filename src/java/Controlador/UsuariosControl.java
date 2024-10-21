@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 
 /**
@@ -44,9 +45,11 @@ public class UsuariosControl extends HttpServlet {
              // usuarios = new Usuarios(1, nombres,"", passwor,Integer.parseInt(""));
                 usuarios = new Usuarios(nombres,passwor);
                 if(usuaruirsDAO.ValidarUsuario(usuarios)){
+                  // ArrayList<Usuarios>list=usuaruirsDAO.BuscarUsuarioNombre(nombres);
+                  ArrayList<Usuarios> list=usuaruirsDAO.ValidarRol(nombres);
+                   request.setAttribute("listaUsuarios", list);
                     request.setAttribute("r", "1");
-                    request.setAttribute("usr", request.getParameter("usr"));
-                    
+                    request.setAttribute("usr", request.getParameter("usr"));   
                 }
                 else{
                     request.setAttribute("r", "0");

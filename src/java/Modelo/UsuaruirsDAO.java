@@ -115,6 +115,45 @@ public class UsuaruirsDAO {
         return ar;
     }
     /*
+      public Producto ObtenerProductoPorId(int pId){
+        try{
+            ps = conectar().prepareStatement("SELECT * FROM Producto p INNER JOIN "
+                    + "Marca m ON p.IdMarca=m.Id WHERE p.Id=?;");
+            ps.setInt(1, pId);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                marca = new Marca(rs.getInt("m.Id"), rs.getString("m.Nombre"));
+                producto = new Producto(rs.getInt("p.Id"), rs.getString("p.Nombre"), 
+                        rs.getFloat("p.Precio"), marca);
+            }
+            ps.close();
+            rs.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return producto;
+    }
+    */
+    public ArrayList<Usuarios> ValidarRol(String nombre){
+        ArrayList<Usuarios> ar = new ArrayList<Usuarios>();
+        try{
+            String sql = "SELECT * FROM Usuarios WHERE nombre=?;";
+           
+            ps = conectar().prepareStatement(sql);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            usuario = new Usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(1));
+                ar.add(usuario);
+            }
+            ps.close();
+            rs.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return ar;
+    }
+    /*
     
     */
     public boolean ValidarUsuario(Usuarios pusuario){

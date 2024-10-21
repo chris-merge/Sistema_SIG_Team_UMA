@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+         <link href="../Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+         <link href="../Css/home_admin.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!-- comment -->
@@ -73,7 +75,7 @@
     <li class="list-group-item">
         <div class="img_list">    
          <img src="../Img/Icon/Usuario.png" class="menu_icon" alt=""/>
-         <span><a href="#"  class="nav-link active" >   buscar usuario</a> </span>
+         <span><a href="Usuario.jsp"  class="nav-link active" >   buscar usuario</a> </span>
          </div>
     </li>
     <li class="list-group-item">

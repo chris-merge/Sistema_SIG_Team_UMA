@@ -34,7 +34,6 @@
            <div class="mb-3">
                <button type="submit" name="validar" value="validar" id="validar" name="validar">Ingresar</button>
            </div>
-           
         </form>
     </div> 
           <%--
@@ -54,13 +53,27 @@
         if (request.getAttribute("r").equals("1")) {
             sesion.setAttribute("s", request.getAttribute("usr"));
             // Corregir ruta relativa para acceder a home.jsp
-            response.sendRedirect("html/Home.jsp");
+            //validacion de admin
+            // Obtener la lista de usuarios del request
+    ArrayList<Usuarios> listaUsuarios = (ArrayList<Usuarios>) request.getAttribute("listaUsuarios");
+ 
+            if(listaUsuarios!=null)
+            {
+                    for (Usuarios usuario : listaUsuarios) {
+                            if(usuario.getId_rol()==1){
+                         response.sendRedirect("admin_pages/Admin.jsp");
+                          break;
+                        }else{
+                        response.sendRedirect("html/Home.jsp");
+                         break;
+                             }
+            }
+            }
         } else {
             out.println("<script>Swal.fire('Error Credenciales Incorrectas');</script>");
         }
     }
 %>
     </body>
-   
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

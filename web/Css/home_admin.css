@@ -1,0 +1,91 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 oct 2024, 23:10:28
+    Author     : chris
+*/
+body{
+    background-color: black;
+}
+* {
+  margin:0px;
+  padding: 0px;
+}
+
+.slider {
+  width: 300px;
+  height: 100%;
+  background-color: #FABC3F;
+  position:absolute; 
+  padding: 10px;
+  margin: 0px;
+  border-radius: 12px;
+  
+  /*
+  padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+  */
+}
+
+.slider ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slider li {
+  padding: 1px;
+  border-bottom: 1px solid #ccc;
+  text-align: justify-all;
+  margin-top: 1.5rem;
+ 
+}
+.slider li img{
+    width: auto ;
+      margin-right: 10px;
+     
+     
+     
+}
+.img_list img ,span
+{
+     display: inline-block;
+   
+}
+.img_list img , span{
+    align-items: center;
+}
+#logo{
+   
+    width: 500px;
+    height: 600px;
+}
+#menu_logo{
+    height: auto;
+    width: 100%;
+   /* border: 2px solid red;*/
+     display: inline-block; 
+}
+#menu_logo #contendor_Img{
+   margin-left: 30%;
+ /*border: 5px solid green;*/
+}
+
+.logo_dev{
+    border-radius: 50px;
+}
+/*iconos de menu*/
+.menu_icon{
+    width: auto;
+    height: 47px;
+}
+/*evento hover*/
+.list-group-item:hover .nav-link {
+    color: #16325B; /* Cambia el color del texto al hacer hover */
+    font-weight: bold; /* Aumenta el grosor del texto al hacer hover */
+    font-family: italic;
+}
