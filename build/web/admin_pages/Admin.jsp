@@ -63,7 +63,7 @@
      <li class="list-group-item">
          <div class="img_list">    
              <img src="../Img/Icon/Proyectos.png" class="menu_icon" alt=""/>
-         <span><a href="Proyecto.jsp" class="nav-link active" > buscar proyectos</a> </span>
+         <span><a href="../html/Proyectos.jsp" class="nav-link active" > buscar proyectos</a> </span>
          </div>
      </li>
     <li class="list-group-item">
