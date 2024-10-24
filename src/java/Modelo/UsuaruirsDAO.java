@@ -39,6 +39,7 @@ public class UsuaruirsDAO {
             ps.setString(1, pUsuarios.getNombre());
              ps.setString(2, pUsuarios.getEmail());
               ps.setString(3, pUsuarios.getPasswor());
+                ps.setInt(4, pUsuarios.getId_rol());
               
             n = ps.executeUpdate();
             ps.close();

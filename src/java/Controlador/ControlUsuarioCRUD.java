@@ -45,8 +45,16 @@ public class ControlUsuarioCRUD extends HttpServlet {
                //envio de datos de roles 
                 request.setAttribute("DatosRoles", rolDAO.MostrarRol());
            }
+            //guardar usuario
+            if(request.getParameter("guardar") != null){
+               usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"),request.getParameter("password"),Integer.parseInt(request.getParameter("rol")));
+             
+                usuaruirsDAO.InsertarUsuarios(usuarios);
+             
+           }
             //fin del try
-            rd = request.getRequestDispatcher("admin_pages/Usuario.jsp");
+           rd = request.getRequestDispatcher("admin_pages/Usuario.jsp");
+            //rd = request.getRequestDispatcher("ControlUsuarioCRUD?mostrar");
                 rd.forward(request, response);
         }
     }

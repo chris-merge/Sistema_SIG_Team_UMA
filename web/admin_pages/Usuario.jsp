@@ -14,6 +14,7 @@
         <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="Css/usuarios.css">
     </head>
+    
     <body>
         <%
             HttpSession sesion = request.getSession();
@@ -35,12 +36,14 @@
              ArrayList<Rol> ListaRol= new ArrayList<Rol> ();
             if(request.getAttribute("DatosUsuarios") == null &&  request.getAttribute("DatosRoles") == null )
                 response.sendRedirect("../ControlUsuarioCRUD?mostrar");
+                
             try{
                 ListaUsuarios.addAll((Collection)request.getAttribute("DatosUsuarios"));
                 ListaRol.addAll((Collection)request.getAttribute("DatosRoles"));
+               
             }catch(Exception ex){
             ex.printStackTrace();
-            }
+            } 
             
             //
             if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
@@ -77,36 +80,39 @@
                         <i class="bi bi-person-plus-fill"></i>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action="ControlUsuarioCRUD" method="post">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre de Usuario:</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de usuario">
                             </div>
                             <div class="mb-3">
+                                <label for="acceso" class="form-label">Correo Electronico</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="***">
+                            </div>
+                            <!-- comment -->
+                             <div class="mb-3">
                                 <label for="acceso" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="acceso" name="acceso" placeholder="***">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="***">
                             </div>
                             <!---->
                             <div class="mb-3">
                                  <label for="acceso" class="form-label">ROl</label>
-                                 <select class="form-select" id="rol">
+                                 <select class="form-select" id="rol" name="rol" >
                                       <option value="">Seleccione un rol</option>
                                         <% for(Rol R:ListaRol){ %>
-                                         <option value="vendedor"><%=R.getNombre_rol()%></option>
+                                        <option value="<%=R.getId_Permiso()%>" id="op" name="rol">
+                                            <%=R.getNombre_rol()%>
+                                        </option>
                                    <% }%> 
                                 </select>
                                  </div>
                          <!---->
                             <div class="mb-3">
                                 <label for="acceso" class="form-label">Privilegio:</label>
-                                <input type="text" class="form-control" id="acceso" name="acceso" placeholder="Ingrese el nivel de acceso">
-                            </div>
-                            <div class="mb-3">
-                                <label for="acceso" class="form-label">Acceso:</label>
-                                <input type="text" class="form-control" id="acceso" name="acceso" placeholder="Ingrese el nivel de acceso">
+                                <input type="text" class="form-control" id="privilegio" name="privilegio" readonly>
                             </div>
                             <!-- comment -->
-                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="submit" value="guardar" name="guardar"  id="guardar" class="btn btn-primary">Agregar</button>
                              <button type="submit" class="btn btn-secondary">Modificar</button>
                               <button type="submit" class="btn btn-danger">Elliminar</button>
                         </form>
@@ -125,9 +131,9 @@
                                 <tr>
                                     <th>N°</th>
                                     <th>Nombre</th>
+                                    <th>Correo</th>
                                     <th>Contraseña</th>
                                     <th>Rol</th>
-                                    <th>Privilegios</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -157,6 +163,23 @@
         </div>
     </div>
         <!-- comment -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>        
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>  
+ 
+ <!-- JS de seleccion --> 
+ 
     </body>
+    <script>
+    let rolSelect = document.getElementById('rol');
+    let privilegio = document.getElementById('privilegio');
+    let op=document.getElementById("op");
+    rolSelect.addEventListener('change',()=>{
+       
+       if (rolSelect.value==1) {
+           privilegio.value="Aceeso total";
+        }
+        if(rolSelect.value==2){
+            privilegio.value="Aceeso A reportes";
+        }
+    });
+</script>
 </html>
