@@ -75,7 +75,8 @@
     <li class="list-group-item">
         <div class="img_list">    
          <img src="../Img/Icon/Usuario.png" class="menu_icon" alt=""/>
-         <span><a href="Usuario.jsp"  class="nav-link active" >   buscar usuario</a> </span>
+         <span><a href="ControUser.jsp"  class="nav-link active" >   buscar usuario</a> </span>
+        
          </div>
     </li>
     <li class="list-group-item">
