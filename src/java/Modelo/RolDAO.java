@@ -91,4 +91,23 @@ public class RolDAO {
     /*
     
     */
+     //buscar por id
+     public Rol BuscarRolBuscarPorId(int pId){
+        
+        try{
+            String sql = "SELECT * FROM Usuarios  WHERE id_Usuarios=? ";
+           
+            ps = conectar().prepareStatement(sql);
+            ps.setInt(1, pId);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                  rol = new Rol(rs.getInt(1), rs.getString(2),rs.getInt(3));
+            }
+            ps.close();
+            rs.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return rol;
+    }
 }

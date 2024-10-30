@@ -16,27 +16,13 @@
     <body>
         <!-- comment -->
         
-   <%
+<%
             HttpSession sesion = request.getSession();
             String usr = "";
             if(sesion.getAttribute("s") != null){
                 //out.println("Bienvenido " + ses.getAttribute("s1"));
                 usr = sesion.getAttribute("s").toString();
-            }
-            else{
-                response.sendRedirect("../Login.jsp");
-            }
-            if(request.getParameter("c") != null){
-                sesion.removeAttribute("s");
-                sesion.invalidate();
-                response.sendRedirect("../Login.jsp");
-            }
-            //
-            if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
-        sesion.invalidate(); // Invalida la sesión
-        response.sendRedirect("../index.html"); // Redirige a la página de inicio de sesión
-    }
-        %>
+ %>
         
     
     <div id="menu_logo">
@@ -113,5 +99,22 @@
    </div>
  </div>
         <!-- comment -->
-    </body>
+<!--Validacion -->
+<%
+ }
+            else{
+                response.sendRedirect("../Login.jsp");
+            }
+            if(request.getParameter("c") != null){
+                sesion.removeAttribute("s");
+                sesion.invalidate();
+                response.sendRedirect("../Login.jsp");
+            }
+            //
+  if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
+        sesion.invalidate(); // Invalida la sesión
+        response.sendRedirect("../index.html"); // Redirige a la página de inicio de sesión
+    }    
+%> 
+</body>
 </html>

@@ -39,23 +39,31 @@ public class ControlUsuarioCRUD extends HttpServlet {
             Usuarios usuarios;
             UsuaruirsDAO usuaruirsDAO = new UsuaruirsDAO();
             RolDAO rolDAO = new RolDAO();
+           
             if(request.getParameter("mostrar") != null){
               //envio de lista de  Usuarios
                request.setAttribute("DatosUsuarios", usuaruirsDAO.MostrarUsuarios());
                //envio de datos de roles 
                 request.setAttribute("DatosRoles", rolDAO.MostrarRol());
+                request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
            }
-            //guardar usuario
-            if(request.getParameter("guardar") != null){
-               usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"),request.getParameter("password"),Integer.parseInt(request.getParameter("rol")));
-             
-                usuaruirsDAO.InsertarUsuarios(usuarios);
-             
-           }
+       //if(request.getParameter("mod") != null){
+              //int Id = 1;
+        //       int Id = Integer.parseInt(request.getParameter("1"));
+         //    usuarios= new Usuarios(Id);
+          //   ArrayList<Usuarios> ListaUsuariosID=usuaruirsDAO.BuscarUsuarioBuscarPorId(usuarios);
+              //request.setAttribute("ListaUsuariosID", usuaruirsDAO.BuscarUsuarioBuscarPorId(usuarios));
+           //   if (ListaUsuariosID!=null) {
+          //      request.setAttribute("ListaUsuariosID", ListaUsuariosID);
+           //}
+             // request.setAttribute("ListaUsuariosID", listaUsuarios);
+                //rd=request.getRequestDispatcher("admin_pages/ModificarUsuarios.jsp").forward(request, response);
+           //}
+            
             //fin del try
-           rd = request.getRequestDispatcher("admin_pages/Usuario.jsp");
+          // rd = request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp");
             //rd = request.getRequestDispatcher("ControlUsuarioCRUD?mostrar");
-                rd.forward(request, response);
+                //rd.forward(request, response);
         }
     }
 

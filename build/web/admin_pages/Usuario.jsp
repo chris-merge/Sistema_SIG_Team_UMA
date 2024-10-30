@@ -31,7 +31,7 @@
                 sesion.invalidate();
                 response.sendRedirect("../Login.jsp");
             }
-            //
+            
              ArrayList<Usuarios> ListaUsuarios= new ArrayList<Usuarios> ();
              ArrayList<Rol> ListaRol= new ArrayList<Rol> ();
             if(request.getAttribute("DatosUsuarios") == null &&  request.getAttribute("DatosRoles") == null )

@@ -115,6 +115,27 @@ public class UsuaruirsDAO {
         }
         return ar;
     }
+    
+    //buscar por id
+     public Usuarios BuscarUsuarioBuscarPorId(int pId){
+        
+        try{
+            String sql = "SELECT * FROM Usuarios  WHERE id_Usuarios=? ";
+           
+            ps = conectar().prepareStatement(sql);
+            ps.setInt(1, pId);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                 usuario = new Usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(1));
+               
+            }
+            ps.close();
+            rs.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return usuario;
+    }
     /*
       public Producto ObtenerProductoPorId(int pId){
         try{

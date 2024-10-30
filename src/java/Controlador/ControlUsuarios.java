@@ -26,13 +26,12 @@ public class ControlUsuarios extends HttpServlet {
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Usuarios usuarios;
-        UsuaruirsDAO usuarioDAO = new UsuaruirsDAO();
-       
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
            RequestDispatcher rd;
-         
+           Usuarios usuarios;
+            UsuaruirsDAO usuaruirsDAO = new UsuaruirsDAO();
+            
             /*if(request.getParameter("mostrar") != null){
               
                request.setAttribute("DatosEditoriales", usuarioDAO.MostrarUsuarios());
@@ -52,9 +51,6 @@ public class ControlUsuarios extends HttpServlet {
                 request.setAttribute("Resultado", libroDAO.BuscarLibros(opc, texto));
             }
                   */
-                  String texto = request.getParameter("txt");
-              request.setAttribute("Validar", usuarioDAO.BuscarUsuarioNombre(texto));
-              
             }
             
              /*if(request.getParameter("guardar") != null){
@@ -74,6 +70,15 @@ public class ControlUsuarios extends HttpServlet {
                 usuarioDAO.EliminarUsuarios(usuarios);
            }
               */
+             
+             //mi codigo
+             //guardar usuario
+            if(request.getParameter("guardar") != null){
+               usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"),request.getParameter("password"),Integer.parseInt(request.getParameter("rol")));
+             
+                usuaruirsDAO.InsertarUsuarios(usuarios);
+             
+           }
            rd = request.getRequestDispatcher("index.jsp");
            rd.forward(request, response);
            

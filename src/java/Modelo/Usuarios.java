@@ -72,5 +72,12 @@ public class Usuarios {
         this.Passwor = Passwor;
       
     }
+    
+    //Buscar por id
+     public Usuarios( int id_Usuarios) {
+         this.id_Usuarios = id_Usuarios;
+         
+      
+    }
 
 }
