@@ -29,9 +29,10 @@
                 <div class="card-body ">
                     <h5 class="card-title text-center">Agregar Usuarios</h5>
                     <div class="row justify-content-center">
-                     <a href="#" class="btn btn-primary ">Ir a agregar</a>
+                     <a href="AgregarUsuario.jsp" class="btn btn-primary ">Ir a agregar</a>
+                     
                      </div>
-                   
+ 
                 </div>
             </div>
         </div>
@@ -56,8 +57,9 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Gerar Reporte </h5>
                        <div class="row justify-content-center">
-                     <a href="#" class="btn btn-primary ">Generar Reporte</a>
+                     <a href="InfomreUsuario.jsp" class="btn btn-primary ">Generar Reporte</a>
                      </div>
+                   
                 </div>
             </div>
         </div>
