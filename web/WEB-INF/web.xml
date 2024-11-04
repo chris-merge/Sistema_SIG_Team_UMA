@@ -8,6 +8,10 @@
         <servlet-name>ControlUsuarioCRUD</servlet-name>
         <servlet-class>Controlador.ControlUsuarioCRUD</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GraficoServlet</servlet-name>
+        <servlet-class>Controlador.GraficoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuariosControl</servlet-name>
         <url-pattern>/UsuariosControl</url-pattern>
@@ -15,5 +19,9 @@
     <servlet-mapping>
         <servlet-name>ControlUsuarioCRUD</servlet-name>
         <url-pattern>/ControlUsuarioCRUD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GraficoServlet</servlet-name>
+        <url-pattern>/GraficoServlet</url-pattern>
     </servlet-mapping>
 </web-app>

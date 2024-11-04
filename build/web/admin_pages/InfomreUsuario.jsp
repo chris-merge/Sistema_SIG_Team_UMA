@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-          <img src="${pageContext.request.contextPath}/GraficoServlet" alt="Gráfico de Barras">
+          <img src="GraficoServlet" alt="Gráfico de Barras">
     </body>
+  
 </html>
