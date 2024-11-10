@@ -110,4 +110,22 @@ public class RolDAO {
         }
         return rol;
     }
+     // PARA LA GRAFICA 
+     public ArrayList<Rol> ContarUsuariosAll(){
+        ArrayList<Rol> ar = new ArrayList<Rol>();
+        try{
+            ps = conectar().prepareStatement("SELECT COUNT(*) AS total_usuarios FROM roles;");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                  rol = new Rol(rs.getInt(1), rs.getString(2),rs.getInt(3));
+                ar.add(rol);
+            }
+            ps.close();
+            rs.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return ar;
+    }
+     
 }

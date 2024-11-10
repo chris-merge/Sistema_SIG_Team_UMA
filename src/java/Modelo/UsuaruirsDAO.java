@@ -194,4 +194,75 @@ public class UsuaruirsDAO {
         }
         return false;
     }
+    // PARA LA GRAFICA 
+public ArrayList<Usuarios> ContarUsuariosAll() {
+    ArrayList<Usuarios> ar = new ArrayList<>(); // Lista que almacenará los objetos Usuarios
+    try {
+        // Preparar la consulta SQL
+        ps = conectar().prepareStatement("SELECT COUNT(*) AS total_usuarios FROM Usuarios;");
+        rs = ps.executeQuery();
+        
+        // Obtener el valor de COUNT(*)
+        if (rs.next()) {
+            int totalUsuarios = rs.getInt("total_usuarios"); // Obtener el total de usuarios
+            // Crear un objeto Usuarios con el total de usuarios y añadirlo a la lista
+            Usuarios usuario = new Usuarios(totalUsuarios);
+            ar.add(usuario); // Agregar el objeto Usuarios con el total
+        }
+
+        // Cerrar los recursos
+        ps.close();
+        rs.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+    return ar; // Retornar la lista con el objeto Usuarios que contiene el total
+}
+
+
+     
+     //
+     
+     //grafica por rol 
+       public ArrayList<Usuarios> ContarUsuariosRol(int pId){
+        ArrayList<Usuarios> ar = new ArrayList<Usuarios>();
+        try{
+            
+              String sql = "SELECT id_rol, COUNT(*) AS cantidad_usuarios FROM Usuarios WHERE id_rol = ? GROUP BY id_rol;";
+           
+            ps = conectar().prepareStatement(sql);
+            ps.setInt(1, pId);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                usuario = new Usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(1));
+                ar.add(usuario);
+            }
+            ps.close();
+            rs.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return ar;
+    }
+       //lista de borrados 
+       //grafica por rol 
+       public ArrayList<Usuarios> ContarUsuariosEliminados(){
+        ArrayList<Usuarios> ar = new ArrayList<Usuarios>();
+        try{
+            
+              String sql = "SELECT COUNT(*) AS total_usuarios_eliminados FROM usuariosEliminados;";
+           
+            ps = conectar().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                usuario = new Usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(1));
+                ar.add(usuario);
+            }
+            ps.close();
+            rs.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return ar;
+    }
 }

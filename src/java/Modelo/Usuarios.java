@@ -14,7 +14,8 @@ public class Usuarios {
     private String email;
     private String Passwor;
     private int id_rol;
-
+//uso del count 
+    
     public Usuarios() {
     }
 

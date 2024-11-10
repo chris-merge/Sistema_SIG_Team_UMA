@@ -9,8 +9,12 @@
         <servlet-class>Controlador.ControlUsuarioCRUD</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GraficoServlet</servlet-name>
-        <servlet-class>Controlador.GraficoServlet</servlet-class>
+        <servlet-name>ControladorChartJS</servlet-name>
+        <servlet-class>Controlador.ControladorChartJS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControlChart_JS</servlet-name>
+        <servlet-class>Controlador.ControlChart_JS</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UsuariosControl</servlet-name>
@@ -21,7 +25,11 @@
         <url-pattern>/ControlUsuarioCRUD</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GraficoServlet</servlet-name>
-        <url-pattern>/GraficoServlet</url-pattern>
+        <servlet-name>ControladorChartJS</servlet-name>
+        <url-pattern>/ControladorChartJS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlChart_JS</servlet-name>
+        <url-pattern>/ControlChart_JS</url-pattern>
     </servlet-mapping>
 </web-app>
