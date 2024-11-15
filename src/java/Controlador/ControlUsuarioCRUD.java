@@ -33,6 +33,7 @@ public class ControlUsuarioCRUD extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             RequestDispatcher rd;
@@ -47,23 +48,19 @@ public class ControlUsuarioCRUD extends HttpServlet {
                 request.setAttribute("DatosRoles", rolDAO.MostrarRol());
                 request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
            }
-       //if(request.getParameter("mod") != null){
-              //int Id = 1;
-        //       int Id = Integer.parseInt(request.getParameter("1"));
-         //    usuarios= new Usuarios(Id);
-          //   ArrayList<Usuarios> ListaUsuariosID=usuaruirsDAO.BuscarUsuarioBuscarPorId(usuarios);
-              //request.setAttribute("ListaUsuariosID", usuaruirsDAO.BuscarUsuarioBuscarPorId(usuarios));
-           //   if (ListaUsuariosID!=null) {
-          //      request.setAttribute("ListaUsuariosID", ListaUsuariosID);
-           //}
-             // request.setAttribute("ListaUsuariosID", listaUsuarios);
-                //rd=request.getRequestDispatcher("admin_pages/ModificarUsuarios.jsp").forward(request, response);
-           //}
-            
-            //fin del try
-          // rd = request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp");
-            //rd = request.getRequestDispatcher("ControlUsuarioCRUD?mostrar");
-                //rd.forward(request, response);
+if(request.getParameter("guardar") != null){
+                  usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
+                  usuaruirsDAO.InsertarUsuarios(usuarios);
+             request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
+             
+           }
+//eliminar 
+ if(request.getParameter("eliminar") != null){
+               usuarios = new Usuarios(Integer.parseInt(request.getParameter("id")));
+               usuaruirsDAO.EliminarUsuarios(usuarios);
+                request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
+           }
+       
         }
     }
 

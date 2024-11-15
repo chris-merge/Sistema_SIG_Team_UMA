@@ -4,7 +4,7 @@
     Author     : chris
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" import="Modelo.*" import="Controlador.*" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,42 +47,59 @@
      
   </div>
 </nav>
+ <%
+             // ArrayList<Usuarios> ListaUsuarios= new ArrayList<Usuarios> ();
+             /*
+              Usuarios usuarios = new Usuarios();
+            UsuaruirsDAO usuaruirsDAO = new UsuaruirsDAO();
+             int id = Integer.parseInt(request.getParameter("id"));
+             usuarios = usuaruirsDAO.BuscarUsuarioBuscarPorId(id);
+             */
+            
+            Rol rol = new Rol();
+            RolDAO rolDAO=new RolDAO();
+             ArrayList<Rol> ListaRol= rolDAO.MostrarRol();
+        %>
        <!--Navegador-->
        <!-- FORM -->
         <div class="container mt-5 ">
         <div   class="row justify-content-center">
            
             <div class="col-md-4 col-h-auto bg-dark form">
-                <form>
-                    <div class="mb-3" id="titulo">
+                <form action="../ControlUsuarioCRUD"  method="post">
+                 <div class="mb-3" id="titulo">
                         <h2>Agregar Usuarios</h2> 
                     </div>
                     
-                    <div class="mb-3">
+                                 <div class="mb-3">
 
                         <label for="nombreUsuario" class="form-label">Nombre de Usuario</label>
-                        <input type="text" class="form-control" id="nombreUsuario" placeholder="Ingrese su nombre de usuario">
+                        <input type="text" class="form-control" id="nombreUsuario" name="nombre" placeholder="Ingrese su nombre de usuario">
                     </div>
                     <div class="mb-3">
                         <label for="correoElectronico" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control"   id="correoElectronico" placeholder="name@example.com">
+                        <input type="email" class="form-control"   id="correoElectronico" name="email" placeholder="name@example.com">
                     </div>
                     <div   class="mb-3">
                         <label for="contrasena" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="contrasena">
+                        <input type="password" class="form-control" id="password" name="password">
 
                     </div>
                     <div class="mb-3">
                         <label   for="rol" class="form-label">Rol</label>
-                        <select class="form-select" id="rol">
-                            <option value="administrador">Administrador</option>
-                            <option value="usuario">Usuario</option>
+                        <select class="form-select" id="rol" name="rol">
+                           <%for(Rol r:ListaRol){ %>
+                            <option value="<%=r.getId_rol()%>" id="id_rol" name="rol"><%=r.getNombre_rol()%></option>
+                           <%}%>
                         </select>
                     </div>
                     <div class="mb-5 " id="btn_registrar">
-                    <button type="submit" class="btn btn-primary col-md-4">Registrar</button>
+                           <!--boton al 100-->
+                <input type="submit" value="Agregar" id="Guardar" name="guardar" class="btn btn-primary" />
+                
                     </div>
-                </form>
+              
+                </form>   
             </div>
         </div>
     </div>

@@ -133,5 +133,11 @@
             privilegio.value="Aceeso A reportes";
         }
     });
+    //eliminar 
+    function Eliminar(elim, id){
+                var r = confirm("¿Seguro que desea eliminar el registro?");
+                if(r)
+                    window.location.href = "ControlUsuarioCRUD?eliminar=" + elim + "&id=" + id;
+            }
 </script>
 </html>

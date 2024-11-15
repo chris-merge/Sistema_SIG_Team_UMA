@@ -73,7 +73,7 @@ public class ControlUsuarios extends HttpServlet {
              
              //mi codigo
              //guardar usuario
-            if(request.getParameter("guardar") != null){
+           if(request.getParameter("Guardar") != null){
                usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"),request.getParameter("password"),Integer.parseInt(request.getParameter("rol")));
              
                 usuaruirsDAO.InsertarUsuarios(usuarios);

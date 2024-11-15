@@ -35,7 +35,7 @@ public class UsuaruirsDAO {
     public int InsertarUsuarios(Usuarios pUsuarios){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("INSERT INTO Usuarios(nombre,email,passwor,id_rol) VALUES(?,?,?,?)");
+            ps = conectar().prepareStatement("INSERT INTO usuarios(nombre,email,passwor,id_rol) VALUES(?,?,?,?)");
             ps.setString(1, pUsuarios.getNombre());
              ps.setString(2, pUsuarios.getEmail());
               ps.setString(3, pUsuarios.getPasswor());

@@ -16,6 +16,10 @@
         <servlet-name>ControlChart_JS</servlet-name>
         <servlet-class>Controlador.ControlChart_JS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlProyectos</servlet-name>
+        <servlet-class>Controlador.ControlProyectos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuariosControl</servlet-name>
         <url-pattern>/UsuariosControl</url-pattern>
@@ -31,5 +35,9 @@
     <servlet-mapping>
         <servlet-name>ControlChart_JS</servlet-name>
         <url-pattern>/ControlChart_JS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlProyectos</servlet-name>
+        <url-pattern>/ControlProyectos</url-pattern>
     </servlet-mapping>
 </web-app>

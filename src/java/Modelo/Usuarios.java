@@ -19,8 +19,6 @@ public class Usuarios {
     public Usuarios() {
     }
 
-    
-
     public Usuarios(int id_Usuarios, String nombre, String email, String Passwor, int id_rol) {
         this.id_Usuarios = id_Usuarios;
         this.nombre = nombre;

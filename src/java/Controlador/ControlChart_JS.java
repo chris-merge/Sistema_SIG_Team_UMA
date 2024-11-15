@@ -57,6 +57,7 @@ public class ControlChart_JS extends HttpServlet {
              ArrayList<Rol> ListaRoles= rolDAO.MostrarRol();
              //lista de totales de usuarios
               ArrayList<Usuarios> Listatotal= usuaruirsDAO.ContarUsuariosAll();
+              
              // Crea el mapa y agrega las listas
              Map<String, Object>Datos= new HashMap<>();
              Datos.put("ListaUser", ListaUser);
