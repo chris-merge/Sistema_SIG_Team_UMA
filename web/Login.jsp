@@ -16,25 +16,58 @@
        
         </head>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script>
+        // Mostrar y ocultar la contraseña
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('togglePasswordIcon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Validar caracteres no permitidos
+        function validatePassword(input) {
+            const invalidCharacters =  /[<>()\[\],?=!°{}&¨´'` "" '']/g;
+            if (invalidCharacters.test(input.value)) {
+                input.value = input.value.replace(invalidCharacters, '');
+                alert('Caracteres no permitidos eliminados.');
+            }
+        }
+    </script>
     <body>
  
  <div class="container">
  <h1>Ingreso sistema SIG</h1>
-<form  action="UsuariosControl" method="post">
- <div class="input-group flex-nowrap mb-3">
-  <span class="input-group-text" id="addon-wrapping">Nombre </span>
-  <input type="text" name="usr" id="txt_name" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required  onkeyup="habilitar()">
-</div>
-           <!--  -->
-  <div class="input-group flex-nowrap mb-3">
-  <span class="input-group-text " id="addon-wrapping">Contraseña</span>
-  <input type="password" class="form-control " id="password" placeholder="Username" aria-label="Passwprd" name="txt_passord" aria-describedby="addon-wrapping"required onkeyup="activarBoton()">
-</div>
-           <div class="mb-3">
-               <button type="submit" name="validar" value="validar" id="validar" name="validar">Ingresar</button>
-           </div>
-        </form>
+<form action="UsuariosControl" method="post">
+        <div class="input-group flex-nowrap mb-3">
+            <span class="input-group-text" id="addon-wrapping">Nombre</span>
+            <input type="text" name="usr" id="txt_name" class="form-control" placeholder="Username" 
+                   aria-label="Username" aria-describedby="addon-wrapping" required onkeyup="habilitar()">
+        </div>
+
+        <div class="input-group flex-nowrap mb-3">
+            <label for="password" class="input-group-text" id="addon-wrapping">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="txt_passord" 
+                   placeholder="Contraseña" aria-label="Password" aria-describedby="addon-wrapping" 
+                   required oninput="validatePassword(this)">
+            <span class="input-group-text">
+                <i class="fa fa-eye" id="togglePasswordIcon" style="cursor: pointer;" onclick="togglePasswordVisibility()"></i>
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" name="validar" value="validar" id="validar">Ingresar</button>
+        </div>
+    </form>
     </div> 
           <%--
                HttpSession sesion = request.getSession();
@@ -75,5 +108,6 @@
     }
 %>
     </body>
+  
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

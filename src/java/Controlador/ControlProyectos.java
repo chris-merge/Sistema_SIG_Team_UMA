@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Modelo.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -29,17 +30,15 @@ public class ControlProyectos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControlProyectos</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControlProyectos at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+           if(request.getParameter("guardar") != null){
+                 // usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
+                 // usuaruirsDAO.InsertarUsuarios(usuarios);
+             request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
+             
+           }
         }
     }
 
