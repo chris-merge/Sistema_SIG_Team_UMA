@@ -20,6 +20,14 @@
         <servlet-name>ControlProyectos</servlet-name>
         <servlet-class>Controlador.ControlProyectos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlCargo</servlet-name>
+        <servlet-class>Controlador.ControlCargo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControlEmpleados</servlet-name>
+        <servlet-class>Controlador.ControlEmpleados</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuariosControl</servlet-name>
         <url-pattern>/UsuariosControl</url-pattern>
@@ -39,5 +47,13 @@
     <servlet-mapping>
         <servlet-name>ControlProyectos</servlet-name>
         <url-pattern>/ControlProyectos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlCargo</servlet-name>
+        <url-pattern>/ControlCargo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlEmpleados</servlet-name>
+        <url-pattern>/ControlEmpleados</url-pattern>
     </servlet-mapping>
 </web-app>

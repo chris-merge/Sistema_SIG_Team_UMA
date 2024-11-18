@@ -39,17 +39,17 @@ public class EmpleadoDAO {
   `id_user` int NOT NULL
 );
     */
-    public int InsertarEmpleados(Empleados pEmpleado){
+   
+    public int InsertarEmpleados(Empleados pEmpleados){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("INSERT INTO empleados(nombre,apellido,id_cargo,telefono,direccion,id_user) VALUES(?,?,?,?,?)");
-            ps.setString(1, pEmpleado.getNombre());
-             ps.setString(2, pEmpleado.getApellido());
-              ps.setInt(3, pEmpleado.getId_cargo());
-                ps.setString(4, pEmpleado.getTelefono());
-              ps.setString(5, pEmpleado.getDireccion());
-               ps.setInt(6, pEmpleado.getId_user());
-              
+           ps = conectar().prepareStatement("INSERT INTO empleados(nombre,apellido,id_cargo,telefono,direccion,id_user)VALUES(?,?,?,?,?,?)");
+            ps.setString(1, pEmpleados.getNombre());
+            ps.setString(2, pEmpleados.getApellido());
+            ps.setInt(3, pEmpleados.getId_cargo());
+            ps.setString(4, pEmpleados.getTelefono());
+            ps.setString(5, pEmpleados.getDireccion());
+            ps.setInt(6, pEmpleados.getId_user());
             n = ps.executeUpdate();
             ps.close();
         }catch(Exception e){
@@ -68,7 +68,7 @@ public class EmpleadoDAO {
                           `id_user` int NOT NULL
                         );
  */
-    public int ModificarUsuarios(Empleados pEmpleado){
+    public int ModificarEmpleado(Empleados pEmpleado){
         int n = 0;
         try{
             ps = conectar().prepareStatement("UPDATE empleados SET nombre=?, apellido=?,id_cargo=?,telefono=?, direccion=?,id_user=? WHERE id_persona=?");
@@ -113,7 +113,7 @@ public class EmpleadoDAO {
     public ArrayList<Empleados> MostrarEmpleado(){
         ArrayList<Empleados> ar = new ArrayList<Empleados>();
         try{
-            ps = conectar().prepareStatement("SELECT * FROM empleados");
+            ps = conectar().prepareStatement("SELECT * FROM Empleados");
             rs = ps.executeQuery();
             while(rs.next()){
                 empleado = new Empleados(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getInt(7));

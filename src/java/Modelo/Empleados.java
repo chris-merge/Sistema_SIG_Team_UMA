@@ -40,6 +40,14 @@ public class Empleados {
         this.direccion = direccion;
         this.id_user = id_user;
     }
+        public Empleados(String nombre, String apellido, int id_cargo, String telefono, String direccion, int id_user) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.id_cargo = id_cargo;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.id_user = id_user;
+    }
     //seter
 
     public void setId_persona(int id_persona) {

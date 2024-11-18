@@ -36,7 +36,7 @@
 
         // Validar caracteres no permitidos
         function validatePassword(input) {
-            const invalidCharacters =  /[<>()\[\],?=!°{}&¨´'` "" '']/g;
+            const invalidCharacters =  /[<>()\[\],?=!°{}&¨´'` "" '' /]/g;
             if (invalidCharacters.test(input.value)) {
                 input.value = input.value.replace(invalidCharacters, '');
                 alert('Caracteres no permitidos eliminados.');

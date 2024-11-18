@@ -37,7 +37,7 @@ public class CargoDAO {
     public int InsertarCargo(Cargo pCargo){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("INSERT INTO Cargo(nombre) VALUES(?)");
+            ps = conectar().prepareStatement("INSERT INTO cargos(nombre_cargo) VALUES(?)");
             ps.setString(1, pCargo.getNombre_cargo());
               
             n = ps.executeUpdate();
@@ -56,7 +56,7 @@ public class CargoDAO {
     public int Modificarcargos(Cargo pCargo){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("UPDATE Cargo SET nombre=? WHERE id_cargo=?");
+            ps = conectar().prepareStatement("UPDATE cargos SET nombre_cargo=? WHERE id_cargo=?");
             ps.setString(1, pCargo.getNombre_cargo());
                ps.setInt(2, pCargo.getId_cargo());
             n = ps.executeUpdate();
@@ -70,7 +70,7 @@ public class CargoDAO {
     public int EliminarCargo(Cargo pCargo){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("DELETE FROM Cargo WHERE id_cargo=?");
+            ps = conectar().prepareStatement("DELETE FROM cargos WHERE id_cargo=?");
             ps.setInt(1, pCargo.getId_cargo());
             n = ps.executeUpdate();
             ps.close();
@@ -89,7 +89,7 @@ public class CargoDAO {
     public ArrayList<Cargo> MostrarCargo(){
         ArrayList<Cargo> ar = new ArrayList<Cargo>();
         try{
-            ps = conectar().prepareStatement("SELECT * FROM empleados");
+            ps = conectar().prepareStatement("SELECT * FROM cargos");
             rs = ps.executeQuery();
             while(rs.next()){
                 cargo = new Cargo(rs.getInt(1), rs.getString(2));

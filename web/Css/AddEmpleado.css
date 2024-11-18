@@ -1,0 +1,89 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 nov 2024, 01:59:23
+    Author     : chris
+*/
+ body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            
+          
+            
+        }
+
+        /* Estilo del contenedor del formulario */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Estilo de la tarjeta */
+        .card-form {
+            background-color: #2c2f33;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100vh;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Estilos del encabezado */
+        .card-form h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        /* Estilos de los labels y campos de entrada */
+        .form-label {
+            font-weight: bold;
+            color: #ddd;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-control {
+            background-color: #40444b;
+            border: none;
+            color: #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .form-control::placeholder {
+            color: #888;
+        }
+
+        /* Estilos del selector */
+        .form-select {
+            background-color: #40444b;
+            border: none;
+            color: #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        /* Estilos del botón */
+        .btn-primary {
+            background-color: #7289da;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #5b6eae;
+        }

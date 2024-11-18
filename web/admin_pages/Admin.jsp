@@ -55,7 +55,7 @@
     <li class="list-group-item">
         <div class="img_list">    
             <img src="../Img/Icon/Empleado.png" class="menu_icon" alt=""/>
-         <span><a href="Empleado.jsp"  class="nav-link active">   Control empleados</a> </span>
+         <span><a href="../pages_Empleados/Empleados.jsp"  class="nav-link active">   Control empleados</a> </span>
          </div>
     </li>
     <li class="list-group-item">
