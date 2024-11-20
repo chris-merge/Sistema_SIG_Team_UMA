@@ -58,7 +58,7 @@ if(request.getParameter("guardar") != null){
  if(request.getParameter("eliminar") != null){
                usuarios = new Usuarios(Integer.parseInt(request.getParameter("id")));
                usuaruirsDAO.EliminarUsuarios(usuarios);
-                request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
+                request.getRequestDispatcher("../admin_pages/Lista_Usuarios.jsp").forward(request, response);
            }
        
         }

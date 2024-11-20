@@ -191,6 +191,7 @@
         // Si los campos de nombre y apellido no están vacíos, obtener las iniciales
         let iniciales = "";
         if (nombre) {
+            //cris
             iniciales += nombre.charAt(0).toUpperCase(); // Primera letra del nombre
         }
         if (apellido) {

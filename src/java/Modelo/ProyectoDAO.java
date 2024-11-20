@@ -42,13 +42,13 @@ public class ProyectoDAO {
     public int Insertarproyectos(Proyecto pProyecto){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("INSERT INTO proyectos(Estado,jefe_proyecto,nombre_proyecto,fecha_inicio,Fecha_Finalizacion,id_Decripcion) VALUES(?,?,?,?,?,?)");
+            ps = conectar().prepareStatement("INSERT INTO proyectos(Estado,jefe_proyecto,nombre_proyecto,descripcion,fecha_inicio,Fecha_Finalizacion) VALUES(?,?,?,?,?,?)");
         ps.setString(1, pProyecto.getEstado());
         ps.setInt(2, pProyecto.getJefe());
        ps.setString(3, pProyecto.getNombre_proyecto());
-         ps.setString(4, pProyecto.getFecha_inicio());
-           ps.setString(5, pProyecto.getFecha_Finalizacion());
-             ps.setInt(6, pProyecto.getId_Descripcion());
+       ps.setString(4, pProyecto.getDescripcion());
+         ps.setString(5, pProyecto.getFecha_inicio());
+           ps.setString(6, pProyecto.getFecha_Finalizacion());
             n = ps.executeUpdate();
             ps.close();
         }catch(Exception e){
@@ -70,13 +70,14 @@ public class ProyectoDAO {
     public int ModificarProyectos(Proyecto pProyecto){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("UPDATE Cargo SET Estado=? , jefe_proyecto=?,nombre_proyecto=?,fecha_inicio=?,Fecha_Finalizacion=?,id_Decripcion=? WHERE id_proyecto=?");
-        ps.setString(1, pProyecto.getEstado());
+            ps = conectar().prepareStatement("UPDATE proyectos SET Estado=? , jefe_proyecto=?,nombre_proyecto=?,descripcion=?,fecha_inicio=?,Fecha_Finalizacion=? WHERE id_proyecto=?");
+      ps.setString(1, pProyecto.getEstado());
         ps.setInt(2, pProyecto.getJefe());
        ps.setString(3, pProyecto.getNombre_proyecto());
-         ps.setString(4, pProyecto.getFecha_inicio());
-           ps.setString(5, pProyecto.getFecha_Finalizacion());
-             ps.setInt(7, pProyecto.getId_Descripcion());
+       ps.setString(4, pProyecto.getDescripcion());
+         ps.setString(5, pProyecto.getFecha_inicio());
+           ps.setString(6, pProyecto.getFecha_Finalizacion());
+           
             n = ps.executeUpdate();
             ps.close();
         }catch(Exception e){
@@ -95,11 +96,11 @@ public class ProyectoDAO {
                                                     `id_Decripcion` int
                                                   );
  */
-    public int EliminarEquipo(Equipo pEquipo){
+    public int EliminarEquipo(Proyecto pProyecto){
         int n = 0;
         try{
             ps = conectar().prepareStatement("DELETE FROM proyectos WHERE id_proyecto=?");
-            ps.setInt(1, pEquipo.getId_proyecto());
+            ps.setInt(1, pProyecto.getId_proyeto());
             n = ps.executeUpdate();
             ps.close();
         }catch(Exception e){
@@ -109,23 +110,23 @@ public class ProyectoDAO {
     }
      /*
                            
-                      REATE TABLE `proyectos` (
-                                                    `id_proyecto` int PRIMARY KEY AUTO_INCREMENT,
-                                                    `Estado` varchar(25),
-                                                    `jefe_proyecto` int,
-                                                    `nombre_proyecto` varchar(100) NOT NULL,
-                                                    `fecha_inicio` date NOT NULL,
-                                                    `Fecha_Finalizacion` date NOT NULL,
-                                                    `id_Decripcion` int
-                                                  );
+                                                                                        CREATE TABLE `proyectos` (
+                                                                     `id_proyecto` int PRIMARY KEY AUTO_INCREMENT,
+                                                                     `Estado` varchar(25),
+                                                                     `jefe_proyecto` int,
+                                                                     `nombre_proyecto` varchar(100) NOT NULL,
+                                                                     `descripcion` varchar(600),
+                                                                     `fecha_inicio` date NOT NULL,
+                                                                     `Fecha_Finalizacion` date NOT NULL
+                                                                   );
  **/
-    public ArrayList<Proyecto> MostrarEquipo(){
+    public ArrayList<Proyecto> MostrarProyecto(){
         ArrayList<Proyecto> ar = new ArrayList<Proyecto>();
         try{
-            ps = conectar().prepareStatement("SELECT * FROM Equipo");
+            ps = conectar().prepareStatement("SELECT * FROM proyectos");
             rs = ps.executeQuery();
             while(rs.next()){
-              proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+              proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
               ar.add(proyecto);
             }
             ps.close();
@@ -141,12 +142,12 @@ public class ProyectoDAO {
     public ArrayList<Proyecto> BuscarProyectoNombre(String texto){
         ArrayList<Proyecto> ar = new ArrayList<Proyecto>();
         try{
-            String sql = "SELECT * FROM Cargo ";
+            String sql = "SELECT * FROM proyectos ";
            
             ps = conectar().prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-       proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+      proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
                 ar.add(proyecto);
             }
             ps.close();
@@ -177,7 +178,7 @@ public class ProyectoDAO {
             ps.setInt(1, pId);
             rs = ps.executeQuery();
             while(rs.next()){
-                 proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
 
             }
             ps.close();
@@ -271,8 +272,7 @@ public ArrayList<Proyecto> ContarProyectosAll() {
             ps = conectar().prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-             proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
-      
+    proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));      
   
                 ar.add(proyecto);
             }

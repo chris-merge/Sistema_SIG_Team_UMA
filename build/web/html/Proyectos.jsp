@@ -4,7 +4,7 @@
     Author     : chris
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" import="Modelo.*" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,165 +13,114 @@
         <link href="../Css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <!-- comment -->
- <div class="container mt-5">
-        <div class="row justify-content-between align-items-center">
-            <div class="col-auto">
-                <a href="../admin_pages/Admin.jsp" class="btn btn-primary">
-                    <i class="bi bi-folder-plus"></i> Regresar
-                </a>
-            </div>
-            <div class="col-auto">
-                <h3 class="text-end">Proyecto</h3>
-                <img src="../Img/Icon/Proyectos.png" alt="Ícono de proyecto"/>
-            </div>
-            <div class="col-auto">
-                <a href="#" class="text-decoration-none">
-                    <i class="bi bi-house-door"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <label for="nombreProyecto" class="form-label">Nombre Proyecto</label>
-                <input type="text" class="form-control" id="nombreProyecto" value="Zinos">
-            </div>
-            <div class="col-md-4">
-                <label for="jefeProyecto" class="form-label">Jefe Proyecto</label>
-                <input type="text" class="form-control" id="jefeProyecto" value="Julio">
-            </div>
-            <div class="col-md-4">
-                <label for="estado" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="estado" value="Activo">
-            </div>
-        </div>
-    </div>
+       <!--Navegador-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <a class="navbar-brand" href="#">Developer JR</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+       <li class="nav-item">
+                       <a class="nav-link activebtn btn-primary" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  " href="html/Proyectos.jsp">Agregar Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Configuraciones</a>
+                        </li>
+    </ul>
+  </div>
+</nav>
+<%
+    //LISTA DE EMPLEADO
+    Empleados empleados =new Empleados();
+    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    //ACCESO A CAPA DE CARGO
+    Cargo cargo;
+    CargoDAO cargoDAO=new CargoDAO();
+    //comparacion 
+      ArrayList<Empleados>FiltroIDeEmpleado=empleadoDAO.MostrarEmpleado();
+ %>
   <!-- comment -->
-  <!-- comment -->
-  <div class="container mt-5">
+  <div class="container mt-5 dark">
+    <form action="../ControlProyectos" method="post">
         <div class="row">
-  <!-- comment -->
+            <!-- Columna 1: Información del proyecto -->
             <div class="col-md-6">
                 <div class="card bg-dark text-white">
                     <div class="card-header">
-                        <h5 class="card-title">Agregar Usuario</h5>
-                        <i class="bi bi-person-plus-fill"></i>
+                        <h5 class="card-title">Información del Proyecto</h5>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="nombre" class="form-label">Estado</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de usuario">
-                            </div>
-                            <div class="mb-3">
-                                <label for="acceso" class="form-label">Jefe de Proyecto</label>
-                                <input type="password" class="form-control" id="acceso" name="acceso" placeholder="***">
-                            </div>
-                         <!---->
-                            <div class="mb-3">
-                                <label for="acceso" class="form-label">Nombre de Proyecto</label>
-                                <input type="password" class="form-control" id="acceso" name="acceso" placeholder="***">
-                            </div>
-                         <!---->
-                            <div class="mb-3">
-                                <label for="acceso" class="form-label">Descripcion</label>
-                                <input type="text" class="form-control" id="acceso" name="acceso" placeholder="Ingrese el nivel de acceso">
-                            </div>
-                         <!---->
-                            <div class="mb-3">
-                                <label for="acceso" class="form-label">Fecha De Inicio</label>
-                            <input type="date" class="form-control" id="fecha" name="fecha">
-                            </div>
-                         <!---->
+                        <div class="mb-3">
+                            <label for="estado" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="estado" name="estado" placeholder="Ingrese el estado del proyecto">
+                        </div>
+                       <!-- comment -->
                          <div class="mb-3">
-                                <label for="acceso" class="form-label">Fecha De Finalizacion</label>
-                              <input type="date" class="form-control" id="fecha" name="fecha">
-                            </div>
-                            <!-- comment -->
-                            <button type="submit" class="btn btn-primary">Agregar</button>
-                             <button type="submit" class="btn btn-secondary">Modificar</button>
-                              <button type="submit" class="btn btn-danger">Elliminar</button>
-                        </form>
+                                 <label for="acceso" class="form-label">Jefe de cargo</label>
+                              <select class="form-select" id="jefe" name="jefe" >
+                                      <option value="">Seleccione Jefe</option>
+                                        <% for(Empleados  E: FiltroIDeEmpleado){ %>
+                                        <%if (E.getId_cargo()==1) { 
+                                        %>
+                                <option value="<%=E.getId_persona()%>" id="op" name="jefe">
+                                  <%=E.getNombre()%>
+                                </option>
+                                <% }%>
+                                <!-- llave de For -->
+                                   <% }%> 
+                            </select>
+                  </div>
+                       <!-- comment -->
+                        <div class="mb-3">
+                            <label for="nombreProyecto" class="form-label">Nombre del Proyecto</label>
+                            <input type="text" class="form-control" id="nombreProyecto" name="nombre" placeholder="Nombre del proyecto">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
+                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaFinalizacion" class="form-label">Fecha de Finalización</label>
+                            <input type="date" class="form-control" id="fechaFinal" name="fechaFinal">
+                        </div>
                     </div>
                 </div>
             </div>
-<!-- descripciondel proyecto-->
-<div class="col-md-6">
+            <!-- Columna 2: Descripción del proyecto -->
+            <div class="col-md-6">
                 <div class="card bg-dark text-white">
                     <div class="card-header">
-                        <h5 class="card-title">Agregar Descripcion proyecto</h5>
-                        <i class="bi bi-person-plus-fill"></i>
+                        <h5 class="card-title">Descripción del Proyecto</h5>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="nombre" class="form-label">Enunciado del Proyecto </label>
-                               <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="acceso" class="form-label">objetivo del Proyecto</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                         <!---->
-                            <div class="mb-3">
-                                <label for="acceso" class="form-label">Resultados Esperados de Proyecto</label>
-                                 <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                         <br> <br>  <br>  <br>  <br>
-                            <!-- comment -->
-                            <button type="submit" class="btn btn-primary">Agregar</button>
-                             <button type="submit" class="btn btn-secondary">Modificar</button>
-                              <button type="submit" class="btn btn-danger">Elliminar</button>
-                        </form>
+                        <div class="mb-3">
+                            <label for="enunciado" class="form-label">Enunciado del Proyecto</label>
+                            <textarea class="form-control" id="Enunciado" name="Enunciado" rows="3" placeholder="Escriba el enunciado del proyecto"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="objetivo" class="form-label">Objetivo del Proyecto</label>
+                            <textarea class="form-control" id="Objetivo" name="Objetivo" rows="3" placeholder="Escriba el objetivo del proyecto"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="resultadosEsperados" class="form-label">Resultados Esperados</label>
+                            <textarea class="form-control" id="Resultados" name="Resultados" rows="3" placeholder="Escriba los resultados esperados"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-<!-- descripcion-->
         </div>
-    </div>
-  <!-- Lista de Proyectos -->
-   <div class="container mt-5">
-        <div class="row">
-          <!-- comment -->
-            <div class="col-md-12">
-                <div class="card bg-dark text-white">
-                    <div class="card-header">
-                        <h5 class="card-title">Usuarios</h5>
-                        <i class="bi bi-people-fill"></i>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-dark">
-                            <thead>
-                                <tr>
-                                    <th>N°</th>
-                                    <th>Nombre</th>
-                                    <th>Contraseña</th>
-                                    <th>Rol</th>
-                                    <th>Privilegios</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                    <tr>
-              
-                    <td>
-      <a href="VistaModificar.jsp?id>" class="btn btn-success">
-          <i class="fa-solid fa-pen-to-square fa-1x">Modificar</i>
-      </a>
-      <a href="" class="btn btn-danger">
-          <i class="fa-solid fa-trash fa-1x">Eliminar</i>
-      </a>
-                    </td>
-                    </tr>
-                 
-                 </tbody>
-               </table>
-                    </div>
-                </div>
-            </div>
-<!-- comment -->
-      </div>
-  </div>
+        <!-- Botones de acción -->
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary" name="guardar" id="guardar">Agregar Proyecto</button>
+        </div>
+    </form>
+</div>
+
+  <!-- comment -->
+  
     </body>
 </html>

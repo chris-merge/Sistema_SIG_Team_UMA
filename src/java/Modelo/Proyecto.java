@@ -26,29 +26,29 @@ public class Proyecto {
    private String Estado;
    private int Jefe;
    private String nombre_proyecto;
+   private String descripcion;
    private String fecha_inicio;
    private String Fecha_Finalizacion;
-   private int id_Descripcion;
+ 
 
     public Proyecto() {
     }
 
-    public Proyecto(int id_proyeto, String Estado, int Jefe, String nombre_proyecto, String fecha_inicio, String Fecha_Finalizacion, int id_Descripcion) {
+    public Proyecto(int id_proyeto, String Estado, int Jefe, String nombre_proyecto, String descripcion, String fecha_inicio, String Fecha_Finalizacion) {
         this.id_proyeto = id_proyeto;
         this.Estado = Estado;
         this.Jefe = Jefe;
         this.nombre_proyecto = nombre_proyecto;
+        this.descripcion = descripcion;
         this.fecha_inicio = fecha_inicio;
         this.Fecha_Finalizacion = Fecha_Finalizacion;
-        this.id_Descripcion = id_Descripcion;
     }
- 
-    
-  //Buscar por id
-     public Proyecto( int id_proyeto) {
-         this.id_proyeto = id_proyeto;
-     }
-     //setter
+
+
+public Proyecto(int id_proyeto) {
+     this.id_proyeto = id_proyeto;
+    }
+    //seter
 
     public void setId_proyeto(int id_proyeto) {
         this.id_proyeto = id_proyeto;
@@ -74,11 +74,10 @@ public class Proyecto {
         this.Fecha_Finalizacion = Fecha_Finalizacion;
     }
 
-    public void setId_Descripcion(int id_Descripcion) {
-        this.id_Descripcion = id_Descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
-     
-    ///getter
+//geter
 
     public int getId_proyeto() {
         return id_proyeto;
@@ -104,8 +103,8 @@ public class Proyecto {
         return Fecha_Finalizacion;
     }
 
-    public int getId_Descripcion() {
-        return id_Descripcion;
+    public String getDescripcion() {
+        return descripcion;
     }
     
     

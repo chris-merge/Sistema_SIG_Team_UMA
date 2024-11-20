@@ -38,10 +38,9 @@ public class EquipoDAO {
     public int InsertarEquipo(Equipo pEquipo){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("INSERT INTO equipos(nombre_equipo,id_proyecto,id_empleado) VALUES(?,?,?)");
+            ps = conectar().prepareStatement("INSERT INTO equipos(nombre_equipo) VALUES(?)");
             ps.setString(1, pEquipo.getNombre_equipo());
-             ps.setInt(2, pEquipo.getId_proyecto());
-              ps.setInt(3, pEquipo.getId_empleado());
+           
             n = ps.executeUpdate();
             ps.close();
         }catch(Exception e){
@@ -60,10 +59,8 @@ public class EquipoDAO {
     public int ModificarEquipo(Equipo pEquipo){
         int n = 0;
         try{
-            ps = conectar().prepareStatement("UPDATE equipos SET nombre_equipo=?,id_proyecto=?,id_empleado=?  WHERE id_equipo=?");
+            ps = conectar().prepareStatement("UPDATE equipos SET nombre_equipo=?  WHERE id_equipo=?");
           ps.setString(1, pEquipo.getNombre_equipo());
-             ps.setInt(2, pEquipo.getId_proyecto());
-            ps.setInt(3, pEquipo.getId_empleado());
              ps.setInt(4, pEquipo.getId_equipo());
             n = ps.executeUpdate();
             ps.close();
@@ -101,13 +98,13 @@ public class EquipoDAO {
   `id_empleado` int
 ););
  **/
-    public ArrayList<Equipo> MostrarCargo(){
+    public ArrayList<Equipo> MostrarEquipos(){
         ArrayList<Equipo> ar = new ArrayList<Equipo>();
         try{
             ps = conectar().prepareStatement("SELECT * FROM Equipo");
             rs = ps.executeQuery();
             while(rs.next()){
-                equipo = new Equipo(rs.getInt(1), rs.getString(2),rs.getInt(3),rs.getInt(4));
+                equipo = new Equipo(rs.getInt(1), rs.getString(2));
                 ar.add(equipo);
             }
             ps.close();
@@ -137,7 +134,7 @@ public class EquipoDAO {
             ps = conectar().prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                 equipo = new Equipo(rs.getInt(1), rs.getString(2),rs.getInt(3),rs.getInt(4));
+               equipo = new Equipo(rs.getInt(1), rs.getString(2));
                 ar.add(equipo);
             }
             ps.close();
@@ -167,7 +164,7 @@ public class EquipoDAO {
             ps.setInt(1, pId);
             rs = ps.executeQuery();
             while(rs.next()){
-                equipo = new Equipo(rs.getInt(1), rs.getString(2),rs.getInt(3),rs.getInt(4));
+               equipo = new Equipo(rs.getInt(1), rs.getString(2));
        
             }
             ps.close();
@@ -280,7 +277,7 @@ public ArrayList<Equipo> ContarEquipoAll() {
             ps = conectar().prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                equipo = new Equipo(rs.getInt(1), rs.getString(2),rs.getInt(3),rs.getInt(4));
+                 equipo = new Equipo(rs.getInt(1), rs.getString(2));
 
                 ar.add(equipo);
             }

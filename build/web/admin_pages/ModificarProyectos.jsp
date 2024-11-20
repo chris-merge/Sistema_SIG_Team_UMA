@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Proyectos
-    Created on : 22 oct 2024, 22:10:05
+    Document   : ModificarProyectos
+    Created on : 18 nov 2024, 02:20:56
     Author     : chris
 --%>
 
@@ -10,10 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="../Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+         <link href="../Css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-       <!--Navegador-->
+          <!--Navegador-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
   <a class="navbar-brand" href="#">Developer JR</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -119,8 +119,5 @@
         </div>
     </form>
 </div>
-
-  <!-- comment -->
-  
     </body>
 </html>

@@ -49,8 +49,9 @@
      <li class="list-group-item">
          <div class="img_list">    
              <img src="../Img/Icon/Proyectos.png" class="menu_icon" alt=""/>
-         <span><a href="../html/Proyectos.jsp" class="nav-link active" > Control De proyectos</a> </span>
+         <span><a href="../Pages_Proyecto/Dashboar_Proyecto.jsp" class="nav-link active" > Control De proyectos</a> </span>
          </div>
+      
      </li>
     <li class="list-group-item">
         <div class="img_list">    
@@ -86,7 +87,10 @@
     <li class="list-group-item">
         <div class="img_list">    
          <img src="../Img/Icon/Usuario.png" class="menu_icon" alt=""/>
-         <span><a href="#"  class="nav-link active" > Usuario</a> </span>
+         <span>
+             <a href="Dashboar_Equipos.jsp"  class="nav-link active" > Equipos</a>
+            
+         </span>
          </div>
     </li>
  

@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  * @author chris
  */
-public class ControlProyectos extends HttpServlet {
+public class ControlEquipos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,63 +33,29 @@ public class ControlProyectos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Proyecto proyecto;
-        ProyectoDAO proyectoDAO = new ProyectoDAO();
+        Equipo equipo;
+        EquipoDAO equipoDAO = new EquipoDAO();
+        //team 
+        Team_Proyecto team_Proyecto;
+        Team_ProyectoDAO team_ProyectoDAO = new Team_ProyectoDAO();
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             if(request.getParameter("mostrar") != null){
                  // usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
                  // usuaruirsDAO.InsertarUsuarios(usuarios);
-               request.setAttribute("DatosProyecto", proyectoDAO.MostrarProyecto());
+                 //variables de la tabla de equipos
+                 
+                 
+                 
+               request.setAttribute("DatosListaTeam_Proyecto", team_ProyectoDAO.MostrarTeam_Proyecto());
              request.getRequestDispatcher("admin_pages/Dashboar_Equipos.jsp").forward(request, response);
              
            }
-           if(request.getParameter("guardar") != null){
-                 // usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
-                 // usuaruirsDAO.InsertarUsuarios(usuarios);
-                 String NombreProyecto=request.getParameter("nombre");
-                 String jefe=request.getParameter("jefe");
-                 String estado=request.getParameter("estado");
-                 String fechaInicio=request.getParameter("fechaInicio");
-                 String fechaFinal=request.getParameter("fechaFinal");
-                 //decripcion
-                 String Enunciado =request.getParameter("Enunciado");
-                 String Objetivo =request.getParameter("Objetivo");
-                 String Resultados =request.getParameter("Resultados");
-                 //concatenacion de Descripcion 
-                 String Deccripcion= " Enunciado:" + Enunciado +" Obejtivo" + Objetivo +" Resultados: "+ Resultados;
-                 //acceso a las entidades  y DAO
-                 /*
-                 empleados = new  Empleados(1,name,lastname,Integer.parseInt(cargo),tel,direc,IdUser);
-            usuaruirsDAO.InsertarUsuarios(usuarios);
-             empleadoDAO.InsertarEmpleados(empleados);
-                 */
-                 proyecto = new Proyecto(1,estado,Integer.parseInt(jefe),NombreProyecto,Deccripcion,fechaInicio,fechaFinal);
-                 proyectoDAO.Insertarproyectos(proyecto);
-              response.getWriter().println(
-      "<!DOCTYPE html>" +
-        "<html>" +
-        "<head>" +
-        "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>" +
-        "</head>" +
-        "<body>" +
-        "<script type=\"text/javascript\">" +
-        "Swal.fire({" +
-        "  title: '¡Éxito!'," +
-        "  text: 'El cargo ha sido guardado exitosamente.'," +
-        "  icon: 'success'," +
-        "  confirmButtonText: 'Aceptar'" +
-        "}).then((result) => {" +
-        "  if (result.isConfirmed) {" +
-        "    window.location.href = '../html/Proyectos.jsp';" +
-        "  }" +
-        "});" +
-        "</script>" +
-        "</body>" +
-        "</html>"
-    );
-     //
-           }
+            
+            //guardar
+            if (request.getParameter("guardar") != null) {
+                
+            }
         }
     }
 
