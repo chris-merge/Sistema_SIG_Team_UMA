@@ -288,4 +288,21 @@ public ArrayList<Equipo> ContarEquipoAll() {
         }
         return ar;
     }
+       //SELECT * FROM equipos ORDER BY id_equipo DESC LIMIT 1;
+       public ArrayList<Equipo> IdUltimoEquipo(){
+        ArrayList<Equipo> ar = new ArrayList<Equipo>();
+        try{
+            ps = conectar().prepareStatement("SELECT * FROM equipos ORDER BY id_equipo DESC LIMIT 1");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                equipo = new Equipo(rs.getInt(1), rs.getString(2));
+                ar.add(equipo);
+            }
+            ps.close();
+            rs.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return ar;
+    }    
 }

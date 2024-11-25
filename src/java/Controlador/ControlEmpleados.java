@@ -51,9 +51,6 @@ public class ControlEmpleados extends HttpServlet {
            }
             //fin de mostrar
            if(request.getParameter("guardar") != null){
-           // cargo = new Cargo(1,request.getParameter("nombre"));
-            //cargoDAO.InsertarCargo(cargo);
-            //request.getParameter("NombreuSER"),request.getParameter("gmail"),request.getParameter("pass"),
             usuarios = new Usuarios(1,request.getParameter("user"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
             String correo=request.getParameter("email");
             String name=request.getParameter("nombre");
@@ -62,6 +59,7 @@ public class ControlEmpleados extends HttpServlet {
              String tel=request.getParameter("telefono");
              String direc=request.getParameter("direccion"); 
              //busqueda de usuario
+              usuaruirsDAO.InsertarUsuarios(usuarios);
              String SechUser=request.getParameter("user");
              ArrayList<Usuarios>Lista=usuaruirsDAO.BuscarUsuarioNombre(SechUser);
              Usuarios considencia= null;
@@ -72,7 +70,6 @@ public class ControlEmpleados extends HttpServlet {
                }
                int IdUser=considencia.getId_Usuarios();
              empleados = new  Empleados(1,name,lastname,Integer.parseInt(cargo),tel,direc,IdUser);
-            usuaruirsDAO.InsertarUsuarios(usuarios);
              empleadoDAO.InsertarEmpleados(empleados);
            response.getWriter().println(
       "<!DOCTYPE html>" +

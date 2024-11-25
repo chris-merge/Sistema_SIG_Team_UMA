@@ -123,7 +123,7 @@ public class ProyectoDAO {
     public ArrayList<Proyecto> MostrarProyecto(){
         ArrayList<Proyecto> ar = new ArrayList<Proyecto>();
         try{
-            ps = conectar().prepareStatement("SELECT * FROM proyectos");
+            ps = conectar().prepareStatement("select * from Proyectos");
             rs = ps.executeQuery();
             while(rs.next()){
               proyecto = new Proyecto(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));

@@ -57,7 +57,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Gerar Reporte </h5>
                        <div class="row justify-content-center">
-                     <a href="InfomreUsuario.jsp" class="btn btn-primary ">Generar Reporte</a>
+                      <a class="btn btn-primary "   href="../Empleados/GraficoEmpleado.jsp">Generar Reporte</a>
                      </div>
                    
                 </div>

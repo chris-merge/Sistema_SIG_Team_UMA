@@ -32,7 +32,7 @@
         <form>
             <div class="form-group">
                 <label for="nombreEquipo">Nombre de Equipo</label>
-                <input type="text" class="form-control" id="nombreEquipo" placeholder="Ingrese el nombre del equipo" required>
+                <input type="text" class="form-control" id="nombreEquipo" name="nomnreEquipo" placeholder="Ingrese el nombre del equipo" required>
             </div>
              <div class="form-group">
                 <select class="form-select" id="jefe" name="jefe" >
@@ -49,7 +49,7 @@
             </div>
  <div class="form-group">
     
-                <select class="form-select" id="jefe" name="jefe" >
+                <select class="form-select" id="idProyecto" name="jefe" >
                 <option value="">Seleccione El proyecto</option>
                  <%for (Proyecto p:ListaProyectos) {%>
                  <option value="<%=p.getId_proyeto()%>">
@@ -69,7 +69,7 @@
         <!-- Primera columna -->
         <div class="contenedor">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="empleado1" value="<%=E.getId_persona()%> 1">
+                <input class="form-check-input" type="checkbox" id="empleado1" name="team" value="<%=E.getId_persona()%> 1">
                 <label class="form-check-label" for="empleado1"><%=E.getNombre()%> <%=E.getApellido()%></label>
             </div>
         </div>

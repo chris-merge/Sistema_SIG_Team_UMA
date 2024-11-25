@@ -175,7 +175,7 @@ public ArrayList<Empleados> ContarCargoAll() {
     ArrayList<Empleados> ar = new ArrayList<>(); // Lista que almacenará los objetos Usuarios
     try {
         // Preparar la consulta SQL
-        ps = conectar().prepareStatement("SELECT COUNT(*) AS total_usuarios FROM Usuarios;");
+        ps = conectar().prepareStatement("SELECT COUNT(*) AS total_usuarios FROM Cargo;");
         rs = ps.executeQuery();
         
         // Obtener el valor de COUNT(*)

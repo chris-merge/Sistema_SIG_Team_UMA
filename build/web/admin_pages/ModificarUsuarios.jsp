@@ -53,7 +53,7 @@
                     producto = prodDAO.ObtenerProductoPorId(Integer.parseInt(request.getParameter("id")));
       
             */
-            if(request.getParameter("id")!=null){
+            if(request.getParameter("id")!=null ){
              Usuarios usuarios = new Usuarios();
             UsuaruirsDAO usuaruirsDAO = new UsuaruirsDAO();
              int id = Integer.parseInt(request.getParameter("id"));

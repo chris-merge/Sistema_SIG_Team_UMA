@@ -48,7 +48,9 @@ public class ControlChart_JS extends HttpServlet {
             //lista de roles
             Rol rol;
             RolDAO rolDAO = new RolDAO();
-            
+            //empleadps
+            Empleados empleados;
+            EmpleadoDAO empleadosDAO=new EmpleadoDAO();
             //conuslta de usuarios
             if(request.getParameter("userChart") != null){
                 //lista de usuarios 
@@ -72,9 +74,53 @@ public class ControlChart_JS extends HttpServlet {
              out.flush();
           request.getRequestDispatcher("../admin_pages/InformeUsuario.jsp").forward(request, response);
            }
-            
-        
-            
+            //conuslta de Empleados
+               Cargo cargo;
+               CargoDAO cargoDAO=new CargoDAO();
+            if(request.getParameter("EmpladoChart") != null){
+                //lista de usuarios 
+             ArrayList<Empleados> ListaEmpleado= empleadosDAO.ContarempleadosAll();
+             //lista de Cargos 
+             ArrayList<Cargo> ListaCargo= cargoDAO.MostrarCargo();
+              //fin del filtro
+             // Crea el mapa y agrega las listas
+             Map<String, Object>Datos= new HashMap<>();
+             Datos.put("ListaEmpleado", ListaEmpleado);
+             Datos.put("ListaCargo", ListaCargo);
+             // Convierte el mapa a JSON
+             Gson gson = new Gson();
+             String json = gson.toJson(Datos);
+             // Enviar el JSON al cliente
+             //PrintWriter out = response.getWriter();
+             out.print(json);
+             out.flush();
+          request.getRequestDispatcher("../admin_pages/InformeUsuario.jsp").forward(request, response);
+           }
+         //conuslta de Proyectos
+         Proyecto protyecto;
+         ProyectoDAO proyectoDAO = new ProyectoDAO();
+                     if(request.getParameter("EmpleadoChart") != null){
+                            //lista de usuarios 
+                         ArrayList<Proyecto> ListaProyecto= proyectoDAO.MostrarProyecto();
+                         //lista de roles 
+//                         ArrayList<Rol> ListaRoles= rolDAO.MostrarRol();
+                         //lista de totales de usuarios
+//                          ArrayList<Usuarios> Listatotal= usuaruirsDAO.ContarUsuariosAll();
+
+                         // Crea el mapa y agrega las listas
+                         Map<String, Object>Datos= new HashMap<>();
+                         Datos.put("ListaProyecto", ListaProyecto);
+//                         Datos.put("ListaRoles", ListaRoles);
+//                          Datos.put("Listatotal", Listatotal);
+                         // Convierte el mapa a JSON
+                         Gson gson = new Gson();
+                         String json = gson.toJson(Datos);
+                         // Enviar el JSON al cliente
+                         //PrintWriter out = response.getWriter();
+                         out.print(json);
+                         out.flush();
+                      request.getRequestDispatcher("../Pages_Proyecto/InformeProyecto.jsp").forward(request, response);
+                       }   
             
             //
         }

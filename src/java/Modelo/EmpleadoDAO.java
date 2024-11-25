@@ -189,16 +189,18 @@ public class EmpleadoDAO {
     */
     
     // PARA LA GRAFICA 
-public ArrayList<Empleados> ContarUsuariosAll() {
-    ArrayList<Empleados> ar = new ArrayList<>(); // Lista que almacenará los objetos Usuarios
+public ArrayList<Empleados> ContarempleadosAll() {
+    ArrayList<Empleados> ar = new ArrayList<>(); // Lista que almacenará los objetos Usuarios+
     try {
         // Preparar la consulta SQL
-        ps = conectar().prepareStatement("SELECT COUNT(*) AS total_usuarios FROM Usuarios;");
+        ps = conectar().prepareStatement("SELECT c.id_cargo, c.nombre_cargo, COUNT(e.id_persona) AS cantidad_empleados FROM cargos c LEFT JOIN empleados e ON c.id_cargo = e.id_cargo GROUP BY c.id_cargo, c.nombre_cargo;;");
         rs = ps.executeQuery();
         
         // Obtener el valor de COUNT(*)
         if (rs.next()) {
-            int totalEmpleado = rs.getInt("total_usuarios"); // Obtener el total de usuarios
+           // int id = rs.getInt("c.id_cargo"); // Obtener el total de usuarios
+           /// String Nombre = rs.getString("c.nombre_cargo");
+            int totalEmpleado = rs.getInt("cantidad_empleados");
             // Crear un objeto Usuarios con el total de usuarios y añadirlo a la lista
             Empleados empleado = new Empleados(totalEmpleado);
            // Usuarios usuario = new Usuarios(totalUsuarios);

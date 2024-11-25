@@ -41,7 +41,7 @@
                             <a class="nav-link  " href="#">Empleados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reportes</a>
+                            <a class="nav-link"  href="../Empleados/GraficoEmpleado.jsp">Reportes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Configuraciones</a>

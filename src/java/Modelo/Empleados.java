@@ -48,12 +48,15 @@ public class Empleados {
         this.direccion = direccion;
         this.id_user = id_user;
     }
-    //seter
+          
+    //seter setCantidad_empleados
 
     public void setId_persona(int id_persona) {
         this.id_persona = id_persona;
     }
-
+ public void setCantidad_empleados(int id_persona) {
+        this.id_persona = id_persona;
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

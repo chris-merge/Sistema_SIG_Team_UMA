@@ -38,25 +38,120 @@ public class ControlEquipos extends HttpServlet {
         //team 
         Team_Proyecto team_Proyecto;
         Team_ProyectoDAO team_ProyectoDAO = new Team_ProyectoDAO();
+        //Empleado
+        Empleados empleado;
+        EmpleadoDAO empleadosDAO = new EmpleadoDAO();
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             if(request.getParameter("mostrar") != null){
+                
+               request.setAttribute("DatosListaTeam_Proyecto", team_ProyectoDAO.MostrarTeam_Proyecto());
                  // usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
                  // usuaruirsDAO.InsertarUsuarios(usuarios);
                  //variables de la tabla de equipos
-                 
-                 
-                 
-               request.setAttribute("DatosListaTeam_Proyecto", team_ProyectoDAO.MostrarTeam_Proyecto());
+//             String NEquipo=request.getParameter("nomnreEquipo");
+//             int jefe=Integer.parseInt(request.getParameter("jefe"));
+//               int proyecto=Integer.parseInt(request.getParameter("idProyecto"));
+//                 String[] seleccionados = request.getParameterValues("team");
+                 /*
+        ArrayList<Persona> listaPersonas = new ArrayList<>();
+        // Simulando que los datos vienen de un formulario
+        listaPersonas.add(new Persona(1, "Juan", 25));
+        listaPersonas.add(new Persona(2, "María", 30));
+        listaPersonas.add(new Persona(3, "Carlos", 28));
+        // Guardar en la base de datos
+        guardarEnBaseDeDatos(listaPersonas);
+                 CREATE TABLE Team_Proyecto(
+                        Idteam int not null,
+                        `id_proyecto_team` int NOT NULL,
+                          `id_empleado_team` int NOT NULL,
+                          FOREIGN KEY (`id_proyecto_team`) REFERENCES `equipos`(`id_equipo`),
+                          FOREIGN KEY (`id_empleado_team`) REFERENCES `empleados`(`id_persona`)
+                        );
+                        /busqueda de usuario
+             String SechUser=request.getParameter("user");
+             ArrayList<Usuarios>Lista=usuaruirsDAO.BuscarUsuarioNombre(SechUser);
+             Usuarios considencia= null;
+               for (Usuarios U:Lista) {
+                   if (U.getEmail().equals(correo)==true) {
+                       considencia=U;
+                   }
+               }
+               int IdUser=considencia.getId_Usuarios();
+ */
+//                 equipo= new Equipo(1,NEquipo);
+//                 ArrayList<Equipo> ListaEquipo = equipoDAO.IdUltimoEquipo();
+//                 Equipo IdEquipo= null;
+//                 for (Equipo E:ListaEquipo) {
+//                    IdEquipo=E;
+//                }
+//                 //Id de proyecto de para insetar en TEAM
+//                 int IdEquiposTeam=IdEquipo.getId_equipo();
+//                 
+//                for(int i = 0; i < seleccionados.length; i++) {
+//                      ArrayList<Empleados> LsitaEmpleados= new ArrayList<>();
+//                     for (String id : seleccionados) {
+////                response.getWriter().println("<p>ID: " + id + "</p>");
+//                   team_Proyecto =new  Team_Proyecto(IdEquiposTeam,IdEquiposTeam,Integer.parseInt(id));
+//                 
+//            }
+//                }
+               //request.setAttribute("DatosListaTeam_Proyecto", team_ProyectoDAO.MostrarTeam_Proyecto());
              request.getRequestDispatcher("admin_pages/Dashboar_Equipos.jsp").forward(request, response);
              
            }
             
             //guardar
             if (request.getParameter("guardar") != null) {
-                
+                 String NEquipo=request.getParameter("nomnreEquipo");
+             int jefe=Integer.parseInt(request.getParameter("jefe"));
+               int proyecto=Integer.parseInt(request.getParameter("idProyecto"));
+                 String[] seleccionados = request.getParameterValues("team");
+                 /*
+        ArrayList<Persona> listaPersonas = new ArrayList<>();
+        // Simulando que los datos vienen de un formulario
+        listaPersonas.add(new Persona(1, "Juan", 25));
+        listaPersonas.add(new Persona(2, "María", 30));
+        listaPersonas.add(new Persona(3, "Carlos", 28));
+        // Guardar en la base de datos
+        guardarEnBaseDeDatos(listaPersonas);
+                 CREATE TABLE Team_Proyecto(
+                        Idteam int not null,
+                        `id_proyecto_team` int NOT NULL,
+                          `id_empleado_team` int NOT NULL,
+                          FOREIGN KEY (`id_proyecto_team`) REFERENCES `equipos`(`id_equipo`),
+                          FOREIGN KEY (`id_empleado_team`) REFERENCES `empleados`(`id_persona`)
+                        );
+                        /busqueda de usuario
+             String SechUser=request.getParameter("user");
+             ArrayList<Usuarios>Lista=usuaruirsDAO.BuscarUsuarioNombre(SechUser);
+             Usuarios considencia= null;
+               for (Usuarios U:Lista) {
+                   if (U.getEmail().equals(correo)==true) {
+                       considencia=U;
+                   }
+               }
+               int IdUser=considencia.getId_Usuarios();
+ */
+                 equipo= new Equipo(1,NEquipo);
+                 ArrayList<Equipo> ListaEquipo = equipoDAO.IdUltimoEquipo();
+                 Equipo IdEquipo= null;
+                 for (Equipo E:ListaEquipo) {
+                    IdEquipo=E;
+                }
+                 //Id de proyecto de para insetar en TEAM
+                 int IdEquiposTeam=IdEquipo.getId_equipo();
+                 
+                for(int i = 0; i < seleccionados.length; i++) {
+                      ArrayList<Empleados> LsitaEmpleados= new ArrayList<>();
+                     for (String id : seleccionados) {
+//                response.getWriter().println("<p>ID: " + id + "</p>");
+                   team_Proyecto =new  Team_Proyecto(IdEquiposTeam,IdEquiposTeam,Integer.parseInt(id));
+             
             }
+           }
         }
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

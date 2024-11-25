@@ -49,9 +49,13 @@
      <li class="list-group-item">
          <div class="img_list">    
              <img src="../Img/Icon/Proyectos.png" class="menu_icon" alt=""/>
-         <span><a href="../Pages_Proyecto/Dashboar_Proyecto.jsp" class="nav-link active" > Control De proyectos</a> </span>
+         <span>
+             <a href="../Pages_Proyecto/Dashboar_Proyecto.jsp" class="nav-link active" > 
+                 Control De proyectos
+             </a>
+           
+         </span>
          </div>
-      
      </li>
     <li class="list-group-item">
         <div class="img_list">    

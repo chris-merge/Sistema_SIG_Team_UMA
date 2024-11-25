@@ -40,8 +40,8 @@ public class ControlProyectos extends HttpServlet {
             if(request.getParameter("mostrar") != null){
                  // usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
                  // usuaruirsDAO.InsertarUsuarios(usuarios);
-               request.setAttribute("DatosProyecto", proyectoDAO.MostrarProyecto());
-             request.getRequestDispatcher("admin_pages/Dashboar_Equipos.jsp").forward(request, response);
+               request.setAttribute("DatosProyectos", proyectoDAO.MostrarProyecto());
+             request.getRequestDispatcher("Pages_Proyecto/Dashboar_Proyecto.jsp").forward(request, response);
              
            }
            if(request.getParameter("guardar") != null){

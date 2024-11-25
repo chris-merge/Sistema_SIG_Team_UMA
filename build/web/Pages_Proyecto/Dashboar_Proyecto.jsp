@@ -15,11 +15,11 @@
     <body>
         <%
              ArrayList<Proyecto> Listaproyecto= new ArrayList<Proyecto> ();
-            if(request.getAttribute("DatosProyecto") == null )
+            if(request.getAttribute("DatosProyectos") == null ){
                 response.sendRedirect("../ControlProyectos?mostrar");
-                
+            }
             try{
-                Listaproyecto.addAll((Collection)request.getAttribute("DatosProyecto"));
+                Listaproyecto.addAll((Collection)request.getAttribute("DatosProyectos"));
                
                
             }catch(Exception ex){
@@ -42,7 +42,8 @@
                             <a class="nav-link  " href="html/Proyectos.jsp">Agregar Proyectos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reportes</a>
+                            <a class="nav-link" href="Pages_Proyecto/InformeProyecto.jsp">Informe</a>
+                           
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Configuraciones</a>

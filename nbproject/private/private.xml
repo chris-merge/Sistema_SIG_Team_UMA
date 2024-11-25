@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/web/Login.jsp</file>
-            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Controlador/UsuariosControl.java</file>
-            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Modelo/UsuaruirsDAO.java</file>
-            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Modelo/Usuarios.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Modelo/EmpleadoDAO.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Controlador/ControlEmpleados.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Modelo/Empleados.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Controlador/ControlChart_JS.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/web/Empleados/GraficoEmpleado.jsp</file>
+            <file>file:/C:/Users/chris/OneDrive/Documentos/NetBeansProjects/SIG_INGENIERIA/src/java/Modelo/CargoDAO.java</file>
         </group>
     </open-files>
 </project-private>
