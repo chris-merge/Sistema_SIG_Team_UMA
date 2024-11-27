@@ -102,6 +102,7 @@ public class ControlChart_JS extends HttpServlet {
                      if(request.getParameter("EmpleadoChart") != null){
                             //lista de usuarios 
                          ArrayList<Proyecto> ListaProyecto= proyectoDAO.MostrarProyecto();
+                         ArrayList<Proyecto> ListaCount= proyectoDAO.ContarProyectosAll();
                          //lista de roles 
 //                         ArrayList<Rol> ListaRoles= rolDAO.MostrarRol();
                          //lista de totales de usuarios
@@ -110,6 +111,7 @@ public class ControlChart_JS extends HttpServlet {
                          // Crea el mapa y agrega las listas
                          Map<String, Object>Datos= new HashMap<>();
                          Datos.put("ListaProyecto", ListaProyecto);
+                           Datos.put("ListaCount", ListaCount);
 //                         Datos.put("ListaRoles", ListaRoles);
 //                          Datos.put("Listatotal", Listatotal);
                          // Convierte el mapa a JSON

@@ -79,7 +79,10 @@
     <li class="list-group-item">
         <div class="img_list">    
          <img src="../Img/Icon/home.png" class="menu_icon" alt=""/>
-         <span><a href="#"  class="nav-link active" >inventario</a> </span>
+         <span>
+             <a href="../tPages_inventario/Informe_Inventario.jsp"  class="nav-link active" >inventario</a> 
+             
+         </span>
          </div>
     </li>
     <li class="list-group-item">

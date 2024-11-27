@@ -102,7 +102,7 @@ public class ControlEquipos extends HttpServlet {
            }
             
             //guardar
-            if (request.getParameter("guardar") != null) {
+            if (request.getParameter("guardar")!= null) {
                  String NEquipo=request.getParameter("nomnreEquipo");
              int jefe=Integer.parseInt(request.getParameter("jefe"));
                int proyecto=Integer.parseInt(request.getParameter("idProyecto"));
@@ -134,6 +134,7 @@ public class ControlEquipos extends HttpServlet {
                int IdUser=considencia.getId_Usuarios();
  */
                  equipo= new Equipo(1,NEquipo);
+                 equipoDAO.InsertarEquipo(equipo);
                  ArrayList<Equipo> ListaEquipo = equipoDAO.IdUltimoEquipo();
                  Equipo IdEquipo= null;
                  for (Equipo E:ListaEquipo) {
@@ -146,8 +147,30 @@ public class ControlEquipos extends HttpServlet {
                       ArrayList<Empleados> LsitaEmpleados= new ArrayList<>();
                      for (String id : seleccionados) {
 //                response.getWriter().println("<p>ID: " + id + "</p>");
-                   team_Proyecto =new  Team_Proyecto(IdEquiposTeam,IdEquiposTeam,Integer.parseInt(id));
-             
+                   team_Proyecto =new  Team_Proyecto(1,IdEquiposTeam,Integer.parseInt(id));
+                   team_ProyectoDAO.InsertarTeam_Proyecto(team_Proyecto);
+                    response.getWriter().println(
+      "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>" +
+        "</head>" +
+        "<body>" +
+        "<script type=\"text/javascript\">" +
+        "Swal.fire({" +
+        "  title: '¡Éxito!'," +
+        "  text: 'El cargo ha sido guardado exitosamente.'," +
+        "  icon: 'success'," +
+        "  confirmButtonText: 'Aceptar'" +
+        "}).then((result) => {" +
+        "  if (result.isConfirmed) {" +
+        "    window.location.href = 'pages_Equipos/AgregarEquipo.jsp';" +
+        "  }" +
+        "});" +
+        "</script>" +
+        "</body>" +
+        "</html>"
+    );
             }
            }
         }

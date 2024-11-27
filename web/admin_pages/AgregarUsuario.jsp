@@ -38,7 +38,7 @@
         <a class="nav-link" href="Admin.jsp">Inicio </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Infome</a>
+        <a class="nav-link" href="InfomreUsuario.jsp">Infome</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="ControUser.jsp">Regresar</a>

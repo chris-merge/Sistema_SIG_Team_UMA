@@ -25,14 +25,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="admin_pages/Admin.jsp">Inicio </a>
+        <a class="nav-link" href="Admin.jsp">Inicio </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Infome</a>
+        <a class="nav-link" href="InfomreUsuario.jsp">Infome</a>
+        
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="admin_pages/Admin.jsp">Regresar</a>
+        <a class="nav-link" href="ControUser.jsp">Regresar</a>
       </li>
+      
     </ul>
   </div>
 </nav>
@@ -60,14 +62,14 @@
              usuarios = usuaruirsDAO.BuscarUsuarioBuscarPorId(id);
             
          %>
-        <form class="needs-validation" novalidate>
+     
   <div class="container">
         <div   
  class="row justify-content-center">
             <div class="col-md-6">
-                <form>
+                <form  action="../ControlUsuarioCRUD" method="post" class="needs-validation">
                     <div class="mb-3">   
-
+                        <input type="text" value="<%=usuarios.getId_Usuarios()%>" name="id">
                         <label for="nombre" class="form-label">Nombre de Usuario</label>
    <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre de usuario" value="<%=usuarios.getNombre()%>">
                     </div>
@@ -97,8 +99,7 @@
                            
                         </select>
                     </div>
-                    <button type="submit" class="btn   
- btn-primary">Agregar</button>
+                     <button type="submit" class="btn btn-primary" name="modificar" id="modificar">Modificar Usuario</button>
                 </form>
             </div>
         </div>

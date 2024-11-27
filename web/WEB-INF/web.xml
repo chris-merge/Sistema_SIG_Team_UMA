@@ -32,6 +32,10 @@
         <servlet-name>ControlEquipos</servlet-name>
         <servlet-class>Controlador.ControlEquipos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>tControlChartjs</servlet-name>
+        <servlet-class>Controlador.tControlChartjs</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuariosControl</servlet-name>
         <url-pattern>/UsuariosControl</url-pattern>
@@ -63,5 +67,9 @@
     <servlet-mapping>
         <servlet-name>ControlEquipos</servlet-name>
         <url-pattern>/ControlEquipos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>tControlChartjs</servlet-name>
+        <url-pattern>/tControlChartjs</url-pattern>
     </servlet-mapping>
 </web-app>

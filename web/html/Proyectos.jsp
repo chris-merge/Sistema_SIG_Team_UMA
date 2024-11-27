@@ -22,14 +22,10 @@
                        <a class="nav-link activebtn btn-primary" href="#">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  " href="html/Proyectos.jsp">Agregar Proyectos</a>
+                            <a class="nav-link  " href="../Pages_Proyecto/Dashboar_Proyecto.jsp">Regresar</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Reportes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Configuraciones</a>
-                        </li>
+                        
+                       
     </ul>
   </div>
 </nav>

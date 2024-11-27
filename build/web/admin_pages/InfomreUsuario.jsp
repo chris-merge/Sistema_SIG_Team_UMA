@@ -15,7 +15,25 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-    <body>  
+    <body>
+        <!--Navegador-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <a class="navbar-brand" href="#">Developer JR</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="Admin.jsp">Inicio </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="InfomreUsuario.jsp">Infome</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="ControUser.jsp">Regresar</a>
+      </li>
+    </ul>
+     
+  </div>
+</nav>
         <%
              // ArrayList<Usuarios> ListaUsuarios= new ArrayList<Usuarios> ();
              /*
@@ -47,7 +65,7 @@
          <div class="container">
         <div   
  class="row justify-content-center">
-            <div class="col-md-8">   
+            <div class="col-md-5">   
 
             <!-- Canvas para la gráfica -->
         <canvas id="myChart"></canvas>
@@ -62,10 +80,10 @@
         //empezamos a mandar ej json del controlador
        $(document).ready(function() {
         // Intervalo de 3 segundos (3000 milisegundos)
-    setInterval(obtenerDatos, 6000);
+   // setInterval(obtenerDatos, 6000);
     // Variable para guardar la instancia de la gráfica
-    let myChart;
-    function obtenerDatos() {
+    //let myChart;
+    //function obtenerDatos() {
         $.ajax({
             url: "../ControlChart_JS?userChart", // Reemplaza con la URL real de tu Servlet
             type: "GET",
@@ -94,9 +112,9 @@
                 let userCounts = Listatotal.map(item => item.id_Usuarios);
                 console.log("total2", userCounts);
                  // Verificar si la gráfica ya existe, y en tal caso, destruirla antes de crear una nueva
-                if (myChart) {
-                    myChart.destroy();
-                }
+               // if (myChart) {
+                 //   myChart.destroy();
+                //}
                 // Obtener el contexto del canvas
                
         var ctx = document.getElementById('myChart').getContext('2d');
@@ -155,7 +173,7 @@
             }
         });
         //fin del intervalo de 3s
-    }
+    //}
 });
  //fin a mandar ej json del controlador
  

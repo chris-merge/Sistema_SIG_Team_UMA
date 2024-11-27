@@ -90,6 +90,83 @@ public class ControlProyectos extends HttpServlet {
     );
      //
            }
+           //modificar
+           if(request.getParameter("modificar") != null){
+                 // usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
+                 // usuaruirsDAO.InsertarUsuarios(usuarios);
+                 int id=Integer.parseInt(request.getParameter("id"));
+                 String NombreProyecto=request.getParameter("nombre");
+                 String jefe=request.getParameter("jefe");
+                 String estado=request.getParameter("estado");
+                 String fechaInicio=request.getParameter("fechaInicio");
+                 String fechaFinal=request.getParameter("fechaFinal");
+                 //decripcion
+                 String Enunciado =request.getParameter("Enunciado");
+                 String Objetivo =request.getParameter("Objetivo");
+                 String Resultados =request.getParameter("Resultados");
+                 //concatenacion de Descripcion 
+                 String Deccripcion= " Enunciado:" + Enunciado +" Obejtivo" + Objetivo +" Resultados: "+ Resultados;
+                 //acceso a las entidades  y DAO
+                 /*
+                 empleados = new  Empleados(1,name,lastname,Integer.parseInt(cargo),tel,direc,IdUser);
+            usuaruirsDAO.InsertarUsuarios(usuarios);
+             empleadoDAO.InsertarEmpleados(empleados);
+                 */
+                 proyecto = new Proyecto(id,estado,Integer.parseInt(jefe),NombreProyecto,Deccripcion,fechaInicio,fechaFinal);
+                 proyectoDAO.ModificarProyectos(proyecto);
+              response.getWriter().println(
+      "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>" +
+        "</head>" +
+        "<body>" +
+        "<script type=\"text/javascript\">" +
+        "Swal.fire({" +
+        "  title: '¡Éxito!'," +
+        "  text: 'El cargo ha sido guardado exitosamente.'," +
+        "  icon: 'success'," +
+        "  confirmButtonText: 'Aceptar'" +
+        "}).then((result) => {" +
+        "  if (result.isConfirmed) {" +
+        "    window.location.href = '';" +
+        "  }" +
+        "});" +
+        "</script>" +
+        "</body>" +
+        "</html>"
+    );
+     //
+     
+           }
+           //eliminar 
+ if(request.getParameter("eliminar") != null){
+              proyecto = new Proyecto(Integer.parseInt("id"));
+                 proyectoDAO.ModificarProyectos(proyecto);
+               // request.getRequestDispatcher("../admin_pages/Lista_Usuarios.jsp").forward(request, response);
+                           response.getWriter().println(
+      "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>" +
+        "</head>" +
+        "<body>" +
+        "<script type=\"text/javascript\">" +
+        "Swal.fire({" +
+        "  title: '¡Éxito!'," +
+        "  text: 'El Usuario ha sido Eliminado exitosamente.'," +
+        "  icon: 'success'," +
+        "  confirmButtonText: 'Aceptar'" +
+        "}).then((result) => {" +
+        "  if (result.isConfirmed) {" +
+        "    window.location.href = 'admin_pages/Lista_Usuarios.jsp';" +
+        "  }" +
+        "});" +
+        "</script>" +
+        "</body>" +
+        "</html>"
+    );  
+           }
         }
     }
 

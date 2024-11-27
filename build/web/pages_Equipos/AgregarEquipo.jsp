@@ -29,7 +29,7 @@
     ProyectoDAO proyectoDAO = new ProyectoDAO();
     ArrayList<Proyecto>ListaProyectos =proyectoDAO.MostrarProyecto();    
  %>
-        <form>
+        <form action="../ControlEquipos"  method="post">
             <div class="form-group">
                 <label for="nombreEquipo">Nombre de Equipo</label>
                 <input type="text" class="form-control" id="nombreEquipo" name="nomnreEquipo" placeholder="Ingrese el nombre del equipo" required>
@@ -80,7 +80,7 @@
      
 </div>
 
- <button type="submit" class="btn btn-primary">Enviar</button>
+  <button type="submit" class="btn btn-success" name="guardar" id="guardar" >Enviar</button>
         </form>
     </div>
     </body>

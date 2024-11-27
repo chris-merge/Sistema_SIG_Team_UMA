@@ -3,18 +3,60 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 /**
  *
  * @author chris
  */
 public class Conexion {
+    
+//        private String driver = "com.mysql.cj.jdbc.Driver";
+//    private String url = "jdbc:mysql://siguma.c5264yqoy4kv.us-east-2.rds.amazonaws.com:3307/sistema_sigc";
+//    private String user = "admin";
+//    private String password = "SIG_UMA_2024";
+//
+//   
+//
+//    public String getDriver() {
+//        return driver;
+//    }
+//
+//    public void setDriver(String driver) {
+//        this.driver = driver;
+//    }
+//
+//    public String getUrl() {
+//        return url;
+//    }
+//
+//    public void setUrl(String url) {
+//        this.url = url;
+//    }
+//
+//    public String getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(String user) {
+//        this.user = user;
+//    }
+//
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
     /*
     
     */
     private String driver = "com.mysql.cj.jdbc.Driver";
     //private String url = "jdbc:mysql://MYSL_CONTEINER_TEST:27.0.0.1/sistema_SIGC";
     private String url = "jdbc:mysql://localhost:3306/sistema_SIGC";
+    //String url = "jdbc:mysql://4.tcp.ngrok.io:3306/sistema_SIGC";
     private String user ="root";
     private String password ="";
 /*
@@ -53,10 +95,10 @@ public class Conexion {
     /*
     
     */
-  //  private String driver = "com.mysql.cj.jdbc.Driver";
-   // private String url = "jdbc:mysql://localhost:3306/facturacion3";
-   // private String user = "root";
-   // private String password = "12345678";
+//    private String driver = "com.mysql.cj.jdbc.Driver";
+//    private String url = "jdbc:mysql://localhost:3306/facturacion3";
+//    private String user = "root";
+//    private String password = "12345678";
 
     public String getDriver() {
         return driver;
@@ -89,4 +131,7 @@ public class Conexion {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    
+    
 }

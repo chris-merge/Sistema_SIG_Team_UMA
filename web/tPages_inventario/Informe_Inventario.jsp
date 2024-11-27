@@ -1,6 +1,6 @@
 <%-- 
-    Document   : InformeProyecto
-    Created on : 25 nov 2024, 11:07:27
+    Document   : Informe_Inventario
+    Created on : 27 nov 2024, 10:29:36
     Author     : chris
 --%>
 
@@ -83,18 +83,18 @@
     //let myChart;
    // function obtenerDatos() {
         $.ajax({
-            url: "../ControlChart_JS?EmpleadoChart", // Reemplaza con la URL real de tu Servlet
+            url: "../tControlChartjs?inventario", // Reemplaza con la URL real de tu Servlet
             type: "GET",
             dataType: "json",
             success: function(data) {
                 //Empezar a llamas las listas
-                let ListaProyecto=data.ListaProyecto;
-                let ListaCount=data.ListaCount;
+                let ListaInventario=data.ListaInventario;
+               
                 //let Listatotal = data.Listatotal;
                // console.log("Usuarios:", ListaUser);
                 //console.log("rol", ListaRoles);
-                 console.log("ListaProyecto", ListaProyecto);
-                 console.log("ListaCount", ListaCount);
+                 console.log("ListaInventario", ListaInventario);
+                
                 //console.log(data); // Log para depuración
 
                 // Mostrar los datos en la página
@@ -116,50 +116,26 @@
              //   }
         // Crear el gráfico circular
        const ctx = document.getElementById('myBarChart').getContext('2d');
-        const lineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labelsproyecto, // Etiquetas del eje X
-                datasets: [{
-                    label: 'Proyectos  Mensuales ',
-                    data: Countproyecto, // Datos del eje Y
-                    borderColor: 'rgba(75, 192, 192, 1)', // Color de la línea
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // Color de fondo bajo la línea
-                    borderWidth: 2, // Grosor de la línea
-                    tension: 0.4 // Curvatura de la línea
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    },
-                    tooltip: {
-                        enabled: true
-                    }
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Meses'
-                        }
-                    },
-                    y: {
-                        beginAtZero: true, // Empieza desde cero
-                        reverse: false, // Cambiar a true para invertir el eje
-                        min: 0, // Valor mínimo del eje Y
-                        max: 10, // Valor máximo del eje Y (ajústalo según tus datos)
-                        title: {
-                            display: true,
-                            text: 'Cantidad de proyectos'
-                        }
-                    }
+    const inventoryPieChart = new Chart(ctx, {
+        type: 'pie', // Usa 'doughnut' para un gráfico de dona
+        data: {
+            labels: ['Producto 1', 'Producto 2', 'Producto 3'], // Nombres de los productos
+            datasets: [{
+                label: 'Proporción de Inventario',
+                data: [50, 30, 70], // Cantidades
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
                 }
             }
-        });
+        }
+    });
+
                 
                //termina el codigo de charJS
                

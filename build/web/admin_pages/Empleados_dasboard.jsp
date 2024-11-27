@@ -35,13 +35,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
        <li class="nav-item">
-                       <a class="nav-link activebtn btn-primary" href="#">Inicio</a>
+                       <a class="nav-link activebtn btn-primary" href="admin_pages/Admin.jsp">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  " href="#">Empleados</a>
+                            <a class="nav-link  " href="pages_Empleados/Empleados.jsp">Regresar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="../Empleados/GraficoEmpleado.jsp">Reportes</a>
+                            <a class="nav-link"  href="Empleados/GraficoEmpleado.jsp">Reportes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Configuraciones</a>

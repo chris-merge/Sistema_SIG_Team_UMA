@@ -15,6 +15,27 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
+                <!--Navegador-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <a class="navbar-brand" href="#">Developer JR</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+       <li class="nav-item">
+                       <a class="nav-link activebtn btn-primary" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  " href="html/Proyectos.jsp">Agregar Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Pages_Proyecto/InformeProyecto.jsp">Informe</a>
+                           
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Configuraciones</a>
+                        </li>
+    </ul>
+  </div>
+</nav>
         <%
              // ArrayList<Usuarios> ListaUsuarios= new ArrayList<Usuarios> ();
              /*
@@ -68,12 +89,12 @@
             success: function(data) {
                 //Empezar a llamas las listas
                 let ListaProyecto=data.ListaProyecto;
-               // let ListaCargo=data.ListaCargo;
+                let ListaCount=data.ListaCount;
                 //let Listatotal = data.Listatotal;
                // console.log("Usuarios:", ListaUser);
                 //console.log("rol", ListaRoles);
                  console.log("ListaProyecto", ListaProyecto);
-                 // console.log("ListaCargo", ListaCargo);
+                 console.log("ListaCount", ListaCount);
                 //console.log(data); // Log para depuración
 
                 // Mostrar los datos en la página
@@ -87,7 +108,7 @@
                 //accedere a la lista para cambiar a los labels
                 let labelsproyecto = ListaProyecto.map(proyecto=>proyecto.fecha_inicio);
                 // acceder a la cantidad de usuarios 
-               // let CountEmpleado = ListaEmpleado.map(item => item.id_persona);
+               let Countproyecto = ListaCount.map(item => item.id_proyeto);
                // console.log("total2", userCounts);
                  // Verificar si la gráfica ya existe, y en tal caso, destruirla antes de crear una nueva
               //  if (myChart) {
@@ -100,8 +121,8 @@
             data: {
                 labels: labelsproyecto, // Etiquetas del eje X
                 datasets: [{
-                    label: 'Ventas Mensuales ($)',
-                    data: [120, 150, 180, 130, 170, 200], // Datos del eje Y
+                    label: 'Proyectos  Mensuales ',
+                    data: Countproyecto, // Datos del eje Y
                     borderColor: 'rgba(75, 192, 192, 1)', // Color de la línea
                     backgroundColor: 'rgba(75, 192, 192, 0.2)', // Color de fondo bajo la línea
                     borderWidth: 2, // Grosor de la línea
@@ -127,10 +148,13 @@
                         }
                     },
                     y: {
-                        beginAtZero: true,
+                        beginAtZero: true, // Empieza desde cero
+                        reverse: false, // Cambiar a true para invertir el eje
+                        min: 0, // Valor mínimo del eje Y
+                        max: 10, // Valor máximo del eje Y (ajústalo según tus datos)
                         title: {
                             display: true,
-                            text: 'Cantidad en $'
+                            text: 'Cantidad de proyectos'
                         }
                     }
                 }

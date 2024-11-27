@@ -25,6 +25,7 @@
             }catch(Exception ex){
             ex.printStackTrace();
             } 
+           
         %>
  
         <!-- cONTENDIDO -->       
@@ -36,7 +37,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
        <li class="nav-item">
-                       <a class="nav-link activebtn btn-primary" href="#">Inicio</a>
+                       <a class="nav-link activebtn btn-primary" href="admin_pages/Admin.jsp">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link  " href="html/Proyectos.jsp">Agregar Proyectos</a>
@@ -44,9 +45,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Pages_Proyecto/InformeProyecto.jsp">Informe</a>
                            
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Configuraciones</a>
                         </li>
     </ul>
   </div>
@@ -59,8 +57,14 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Total Empleados</h5>
-                                <p class="card-text">50</p>
+                                <h5 class="card-title">Total Proyecto</h5>
+                                <% ProyectoDAO proyectoDAO= new ProyectoDAO();
+                                    ArrayList<Proyecto>ListaContar=proyectoDAO.ContarProyectosAll();
+                                    for (Proyecto p:ListaContar) {                                        
+                                %>
+                               
+                                <td><%=p.getId_proyeto()%></td>
+              <%}%>
                             </div>
                         </div>
                     </div>
@@ -118,7 +122,8 @@
                 <input type="text" class="form-control" id="estado" value="Activo">
             </div>
         </div>
-    </div>       
+    </div>
+         <br>
         <!-- bUSQUEDA -->           
 <!-- Tabla de carga de datos-->
             <div class="col-md-12">
@@ -166,5 +171,13 @@
                     </div>
                 </div>
             </div>
+                 <script>
+    //eliminar 
+    function Eliminar(elim, id){
+                var r = confirm("¿Seguro que desea eliminar el registro?");
+                if(r)
+                    window.location.href = "ControlProyectos?eliminar=" + elim + "&id=" + id;
+            }
+                 </script>
     </body>
 </html>

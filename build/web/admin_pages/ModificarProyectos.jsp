@@ -19,13 +19,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
        <li class="nav-item">
-                       <a class="nav-link activebtn btn-primary" href="#">Inicio</a>
+                       <a class="nav-link activebtn btn-primary" href="Admin.jsp">Inicio</a>
+                     
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  " href="html/Proyectos.jsp">Agregar Proyectos</a>
+                            <a class="nav-link  " href="../html/Proyectos.jsp">Agregar Proyectos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reportes</a>
+                            <a class="nav-link" href="../Pages_Proyecto/InformeProyecto.jsp">Reportes</a>
+                            
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Configuraciones</a>
@@ -35,13 +37,25 @@
 </nav>
 <%
     //LISTA DE EMPLEADO
-    Empleados empleados =new Empleados();
-    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    //Empleados empleados =new Empleados();
+    //EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    //ACCESO A CAPA DE CARGO
+    //Cargo cargo;
+    //CargoDAO cargoDAO=new CargoDAO();
+    //comparacion 
+      //ArrayList<Empleados>FiltroIDeEmpleado=empleadoDAO.MostrarEmpleado();
+      if(request.getParameter("id")!=null ){
+             Proyecto proyecto = new Proyecto();
+            ProyectoDAO proyectoDAO = new ProyectoDAO();
+             int id = Integer.parseInt(request.getParameter("id"));
+             proyecto = proyectoDAO.BuscarProyectoBuscarPorId(id);
+                 Empleados empleados =new Empleados();
+                EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     //ACCESO A CAPA DE CARGO
     Cargo cargo;
     CargoDAO cargoDAO=new CargoDAO();
-    //comparacion 
-      ArrayList<Empleados>FiltroIDeEmpleado=empleadoDAO.MostrarEmpleado();
+     ArrayList<Empleados>FiltroIDeEmpleado=empleadoDAO.MostrarEmpleado();
+             
  %>
   <!-- comment -->
   <div class="container mt-5 dark">
@@ -52,11 +66,12 @@
                 <div class="card bg-dark text-white">
                     <div class="card-header">
                         <h5 class="card-title">Información del Proyecto</h5>
+                        <input type="text" name="id" value="<%=proyecto.getId_proyeto()%>" hidden="">
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="estado" class="form-label">Estado</label>
-                            <input type="text" class="form-control" id="estado" name="estado" placeholder="Ingrese el estado del proyecto">
+                            <input type="text" class="form-control" id="estado" name="estado" value="<%=proyecto.getEstado()%>">
                         </div>
                        <!-- comment -->
                          <div class="mb-3">
@@ -77,15 +92,15 @@
                        <!-- comment -->
                         <div class="mb-3">
                             <label for="nombreProyecto" class="form-label">Nombre del Proyecto</label>
-                            <input type="text" class="form-control" id="nombreProyecto" name="nombre" placeholder="Nombre del proyecto">
+                            <input type="text" class="form-control" id="nombreProyecto" name="nombre" placeholder="Nombre del proyecto" value="<%=proyecto.getNombre_proyecto()%>">
                         </div>
                         <div class="mb-3">
                             <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
-                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio">
+                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" value="<%=proyecto.getFecha_inicio()%>">
                         </div>
                         <div class="mb-3">
                             <label for="fechaFinalizacion" class="form-label">Fecha de Finalización</label>
-                            <input type="date" class="form-control" id="fechaFinal" name="fechaFinal">
+                            <input type="date" class="form-control" id="fechaFinal" name="fechaFinal" value="<%=proyecto.getFecha_Finalizacion()%>">
                         </div>
                     </div>
                 </div>
@@ -99,23 +114,16 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="enunciado" class="form-label">Enunciado del Proyecto</label>
-                            <textarea class="form-control" id="Enunciado" name="Enunciado" rows="3" placeholder="Escriba el enunciado del proyecto"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="objetivo" class="form-label">Objetivo del Proyecto</label>
-                            <textarea class="form-control" id="Objetivo" name="Objetivo" rows="3" placeholder="Escriba el objetivo del proyecto"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="resultadosEsperados" class="form-label">Resultados Esperados</label>
-                            <textarea class="form-control" id="Resultados" name="Resultados" rows="3" placeholder="Escriba los resultados esperados"></textarea>
+                            <textarea class="form-control" id="Enunciado" name="Enunciado" rows="3" value="<%=proyecto.getDescripcion()%>"></textarea>
                         </div>
                     </div>
+                    <%}%>
                 </div>
             </div>
         </div>
         <!-- Botones de acción -->
         <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary" name="guardar" id="guardar">Agregar Proyecto</button>
+            <button type="submit" class="btn btn-primary" name="modificar" id="modificar">Modificar Proyecto</button>
         </div>
     </form>
 </div>

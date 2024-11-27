@@ -15,6 +15,28 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
+                <!--Navegador-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <a class="navbar-brand" href="#">Developer JR</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+       <li class="nav-item">
+                       <a class="nav-link activebtn btn-primary" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  " href="../Pages_Proyecto/Dashboar_Proyecto.jsp">Regresar</a>
+                           
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Pages_Proyecto/InformeProyecto.jsp">Informe</a>
+                           
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Configuraciones</a>
+                        </li>
+    </ul>
+  </div>
+</nav>
          <%
              // ArrayList<Usuarios> ListaUsuarios= new ArrayList<Usuarios> ();
              /*

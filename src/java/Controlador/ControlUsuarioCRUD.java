@@ -51,14 +51,87 @@ public class ControlUsuarioCRUD extends HttpServlet {
 if(request.getParameter("guardar") != null){
                   usuarios = new Usuarios(1,request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
                   usuaruirsDAO.InsertarUsuarios(usuarios);
-             request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
+            // request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
+             response.getWriter().println(
+      "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>" +
+        "</head>" +
+        "<body>" +
+        "<script type=\"text/javascript\">" +
+        "Swal.fire({" +
+        "  title: '¡Éxito!'," +
+        "  text: 'El Usuario ha sido guardado exitosamente.'," +
+        "  icon: 'success'," +
+        "  confirmButtonText: 'Aceptar'" +
+        "}).then((result) => {" +
+        "  if (result.isConfirmed) {" +
+        "    window.location.href = 'admin_pages/Lista_Usuarios.jsp';" +
+        "  }" +
+        "});" +
+        "</script>" +
+        "</body>" +
+        "</html>"
+    );
              
            }
 //eliminar 
  if(request.getParameter("eliminar") != null){
                usuarios = new Usuarios(Integer.parseInt(request.getParameter("id")));
                usuaruirsDAO.EliminarUsuarios(usuarios);
-                request.getRequestDispatcher("../admin_pages/Lista_Usuarios.jsp").forward(request, response);
+               // request.getRequestDispatcher("../admin_pages/Lista_Usuarios.jsp").forward(request, response);
+                           response.getWriter().println(
+      "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>" +
+        "</head>" +
+        "<body>" +
+        "<script type=\"text/javascript\">" +
+        "Swal.fire({" +
+        "  title: '¡Éxito!'," +
+        "  text: 'El Usuario ha sido Eliminado exitosamente.'," +
+        "  icon: 'success'," +
+        "  confirmButtonText: 'Aceptar'" +
+        "}).then((result) => {" +
+        "  if (result.isConfirmed) {" +
+        "    window.location.href = 'admin_pages/Lista_Usuarios.jsp';" +
+        "  }" +
+        "});" +
+        "</script>" +
+        "</body>" +
+        "</html>"
+    );  
+           }
+ //modificar
+ if(request.getParameter("modificar") != null){
+                  usuarios = new Usuarios(Integer.parseInt("id"),request.getParameter("nombre"),request.getParameter("email"), request.getParameter("password"),Integer.parseInt( request.getParameter("rol")));
+                  usuaruirsDAO.ModificarUsuarios(usuarios);
+            // request.getRequestDispatcher("admin_pages/Lista_Usuarios.jsp").forward(request, response);
+             response.getWriter().println(
+      "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "<script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>" +
+        "</head>" +
+        "<body>" +
+        "<script type=\"text/javascript\">" +
+        "Swal.fire({" +
+        "  title: '¡Éxito!'," +
+        "  text: 'El Usuario ha sido guardado exitosamente.'," +
+        "  icon: 'success'," +
+        "  confirmButtonText: 'Aceptar'" +
+        "}).then((result) => {" +
+        "  if (result.isConfirmed) {" +
+        "    window.location.href = 'admin_pages/Lista_Usuarios.jsp';" +
+        "  }" +
+        "});" +
+        "</script>" +
+        "</body>" +
+        "</html>"
+    );
+             
            }
        
         }

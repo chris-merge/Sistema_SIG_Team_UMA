@@ -77,7 +77,7 @@ public class ProyectoDAO {
        ps.setString(4, pProyecto.getDescripcion());
          ps.setString(5, pProyecto.getFecha_inicio());
            ps.setString(6, pProyecto.getFecha_Finalizacion());
-           
+           ps.setInt(7, pProyecto.getId_proyeto());
             n = ps.executeUpdate();
             ps.close();
         }catch(Exception e){
@@ -172,7 +172,7 @@ public class ProyectoDAO {
      public Proyecto BuscarProyectoBuscarPorId(int pId){
         
         try{
-            String sql = "SELECT * FROM Proyecto  WHERE id_proyecto=? ";
+            String sql = "SELECT * FROM proyectos  WHERE id_proyecto=? ";
            
             ps = conectar().prepareStatement(sql);
             ps.setInt(1, pId);
@@ -214,12 +214,12 @@ public ArrayList<Proyecto> ContarProyectosAll() {
     ArrayList<Proyecto> ar = new ArrayList<>(); // Lista que almacenará los objetos Usuarios
     try {
         // Preparar la consulta SQL
-        ps = conectar().prepareStatement("SELECT COUNT(*) AS total_Proyecto FROM Proyecto;");
+        ps = conectar().prepareStatement("SELECT p.fecha_inicio, COUNT(p.id_proyecto) AS cantidad_proyectos,e.nombre AS nombre_jefe,e.apellido AS apellido_jefe FROM  proyectos p INNER JOIN  empleados e ON p.jefe_proyecto = e.id_persona GROUP BY p.fecha_inicio, e.nombre, e.apellido ORDER BY p.fecha_inicio;");
         rs = ps.executeQuery();
         
         // Obtener el valor de COUNT(*)
         if (rs.next()) {
-            int totalProyecto = rs.getInt("total_Proyecto"); // Obtener el total de usuarios
+            int totalProyecto = rs.getInt("cantidad_proyectos"); // Obtener el total de usuarios
             // Crear un objeto Usuarios con el total de usuarios y añadirlo a la lista
             Proyecto proyecto = new Proyecto(totalProyecto);
            // Usuarios usuario = new Usuarios(totalUsuarios);
