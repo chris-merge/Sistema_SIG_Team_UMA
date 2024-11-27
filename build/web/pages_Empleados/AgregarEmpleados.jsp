@@ -45,10 +45,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link btn btn-primary" href="Admin.jsp">Inicio </a>
+        <a class="nav-link btn btn-primary" href="../admin_pages/Admin.jsp">Inicio </a>
+        
       </li>
       <li class="nav-item ">
-        <a class="nav-link btn btn-primary " href="#">Infome</a>
+        <a class="nav-link btn btn-primary " href="../Empleados/GraficoEmpleado.jsp">Infome</a>
       </li>
       <li class="nav-item">
         <button type="button" class="nav-link btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">

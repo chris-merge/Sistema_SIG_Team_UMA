@@ -73,7 +73,10 @@
     <li class="list-group-item">
         <div class="img_list">    
          <img src="../Img/Icon/Nomina.png" class="menu_icon" alt=""/>
-         <span><a href="#"  class="nav-link active" > nomina de empleado</a> </span>
+         <span>
+             <a href="../Nomina/Nomina.jsp"  class="nav-link active" > nomina de empleado</a>
+             
+         </span>
          </div>
     </li>
     <li class="list-group-item">

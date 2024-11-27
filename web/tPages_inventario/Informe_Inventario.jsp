@@ -24,14 +24,8 @@
                        <a class="nav-link activebtn btn-primary" href="#">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  " href="html/Proyectos.jsp">Agregar Proyectos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Pages_Proyecto/InformeProyecto.jsp">Informe</a>
+                            <a class="nav-link  " href="../admin_pages/Admin.jsp">Regresar</a>
                            
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Configuraciones</a>
                         </li>
     </ul>
   </div>
@@ -83,17 +77,17 @@
     //let myChart;
    // function obtenerDatos() {
         $.ajax({
-            url: "../tControlChartjs?inventario", // Reemplaza con la URL real de tu Servlet
+            url: "../ControlChart_JS?userChart", // Reemplaza con la URL real de tu Servlet
             type: "GET",
             dataType: "json",
             success: function(data) {
                 //Empezar a llamas las listas
-                let ListaInventario=data.ListaInventario;
+               // let ListaInventario=data.ListaInventario;
                
                 //let Listatotal = data.Listatotal;
                // console.log("Usuarios:", ListaUser);
                 //console.log("rol", ListaRoles);
-                 console.log("ListaInventario", ListaInventario);
+                 //console.log("ListaInventario", ListaInventario);
                 
                 //console.log(data); // Log para depuración
 
@@ -106,9 +100,9 @@
                 $("#result").html(html);
                 
                 //accedere a la lista para cambiar a los labels
-                let labelsproyecto = ListaProyecto.map(proyecto=>proyecto.fecha_inicio);
+              //  let labelsproyecto = ListaProyecto.map(proyecto=>proyecto.fecha_inicio);
                 // acceder a la cantidad de usuarios 
-               let Countproyecto = ListaCount.map(item => item.id_proyeto);
+             //  let Countproyecto = ListaCount.map(item => item.id_proyeto);
                // console.log("total2", userCounts);
                  // Verificar si la gráfica ya existe, y en tal caso, destruirla antes de crear una nueva
               //  if (myChart) {
